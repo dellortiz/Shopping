@@ -14,6 +14,8 @@ function updateBasket() {
             var pannier = $('.bloque-pannier');
             pannier.empty();
 
+            var totalItems = 0; // Inicializar contador de artículos
+
             if (response.status === 'success' && response.data.length > 0) {
                 pannier.css('display', 'block');
                 $.each(response.data, function(index, item) {
@@ -35,9 +37,21 @@ function updateBasket() {
                         <button class="botonpannier3" onclick="removeFromBasket(${item.id_products})">Remove</button><hr class="hrpannier">
                     `);
                     pannier.prepend(newItem);
+
+                    totalItems += item.quantity; // Incrementar contador de artículos
                 });
+
+                // Actualizar el contador de artículos y mostrar el icono de la cesta
+                $('#item-count').text(totalItems);
+                if (totalItems > 0) {
+                    $('.basket-icone').css('display', 'flex');
+                } else {
+                    $('.basket-icone').css('display', 'none');
+                }
             } else {
                 pannier.css('display', 'none');
+                $('#item-count').text(0); // Reiniciar el contador si no hay artículos
+                $('.basket-icone').css('display', 'none'); // Ocultar el icono de la cesta
             }
         },
         error: function(xhr, status, error) {

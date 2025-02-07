@@ -11,7 +11,7 @@
 .section-header {
     display: flex;
     justify-content: space-between;
-    background-color: #1b1b32;
+    background-color: #313a5b;
     color: white;
     padding: 1rem; /* Usar unidades relativas */
     position: fixed;
@@ -43,7 +43,7 @@
     background-color: rgb(246, 248, 249);
     }
     .main-body-index {
-    margin: 0 9%;
+    margin: 0 12%;
     min-height: 100vh;
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
     background-color: rgb(246, 248, 249);
@@ -51,13 +51,30 @@
     padding: 21px;
     }
     .div-main{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
         padding: 19px;
         margin-top: 38px;
         background-image: url(../computers/computers.jpg);
         background-size: cover;
-     
-       
+        position: relative;
        }
+       .basket-icone{
+       position: absolute;
+       right: 75px;
+       display: none;
+       font-family: "Merriweather", serif;
+       }
+       .img-basket{
+        width: 3.0rem
+       }
+       .item-count {
+        color: white;
+        font-size: 30px;
+        margin-left: 1px; /* Ajusta el espacio entre la imagen y el contador */
+    }
     
     
     .section-header-index {
@@ -70,8 +87,8 @@
 
 /* //-------------------------------------------------index-header------------------------------------------------// */
 .body-index{
-    margin-left:9% ;
-    margin-right: 9%;
+    margin-left:12% ;
+    margin-right: 12%;
     min-height: 100vh;
     height: auto; /* Permite que el contenedor se ajuste al contenido */
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
@@ -520,7 +537,7 @@ color: #FFFFFF;
 font-family: 'Roboto', sans-serif;
 border:none;
 box-sizing: border-box;
-margin: 20px;
+margin: 7px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra profesional */
 border-radius: 4px;
 text-align: center;
@@ -695,16 +712,6 @@ text-align: left;
     margin-bottom: 50px;
     margin: 10px; 
 }
-.mainbloq{
-    /* display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 90px;  */
-   
-}
-.articulos{
-  
-}
 .bloq2 {
     position: fixed;
     top: auto; /* Ajusta según sea necesario */
@@ -719,8 +726,21 @@ article{
     margin: 15px;
     height: auto;
     text-align: center;
-    /* background-color: #fbfafa; */
+    background-color: #fbfafa;
     /* background-color: rgb(231, 237, 238); */
+    border: 0.2px groove rgb(241, 235, 235);
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 500;
+}
+.article-text{
+    text-align: left;
+    padding: 5px;
+}
+.price-text{
+    font-family: "Merriweather", serif;
+    font-weight: 900;
 }
 /*----------------------------------------*/
 .newdisign {
@@ -734,9 +754,10 @@ article{
     display: flex;
    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 90px;
+    gap: 50px;
       padding: 85px;
       flex: 1;
+     
 }
 
 .bloque-pannier {
@@ -826,8 +847,10 @@ article:hover{
 }
 
 .imgarticle{
-    width: 200px;
+    width: 180px;
     height: 180px;
+    padding-bottom: 5px;
+    border-bottom: 0.2px solid rgb(238, 230, 230);
 }
 .popuparticle {
     display: none;
@@ -844,3 +867,155 @@ a{
     color:black;
 }
 
+/*-----------------------------------------------------------slider------------------------------------------------*/
+
+ 
+
+.bloque2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .contenedor-slider {
+    position: relative;
+    width: 80%; /* Ajusta según tus necesidades */
+    overflow: hidden;
+  }
+  
+  .slide-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slideun {
+    flex: 0 0 33.3333%; /* Cada imagen ocupa exactamente un tercio del ancho */
+    max-width: 33.3333%; /* Aseguramos que no exceda el tercio del contenedor */
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+  }
+  
+  .contenedor-slider i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    z-index: 1; /* Asegura que los botones estén por encima de las imágenes */
+  }
+  
+  .contenedor-slider .fa-chevron-left {
+    left: 10px;
+  }
+  
+  .contenedor-slider .fa-chevron-right {
+    right: 10px;
+  }
+  
+  .contenedor-slider i:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+ /*--------------------------------------------------------------learn about shopping----------------------------------------------------------*/
+  .div-learn {
+    max-width: 77%;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #ffffff;
+  }
+  
+  /* Títulos */
+  .div-learn h1,
+  .div-learn h2,
+  .div-learn h3 {
+    color: #2c3e50;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+  
+  .div-learn h1 {
+    font-size: 2.5em;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+  }
+  
+  .div-learn h2 {
+    font-size: 1.8em;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+  }
+  
+ 
+  
+  /* Párrafos */
+  .div-learn p {
+    font-size: 1em;
+    margin-bottom: 1em;
+    text-align: justify;
+  }
+  
+  /* Lista ordenada */
+  .div-learn ol {
+  
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+  
+  .div-learn ol li {
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    list-style: decimal;
+    font-weight: 200;
+  }
+  /*------------------------------------------------------------------Gallery---------------------------------------------------------------*/
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 10rem);
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-content: center; /* Centra la galería horizontalmente */
+    margin-top: 5%;
+    margin-bottom: 8%;
+    padding: 20px;
+    background-color: #313a5b;
+}
+
+/* Elementos de la galería */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    width: 150px; /* Tamaño más pequeño de las imágenes */
+    height: 120px;
+    margin: 0 auto; /* Centra cada imagen en su celda */
+}
+
+/* Imagen dentro de cada elemento */
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; /* Ocupa todo el alto del contenedor */
+    object-fit: cover;
+    border-radius: 5px; /* Esquinas ligeramente redondeadas */
+}
+.div-aftergallery{
+    max-width: 85%;
+    margin: 40px auto;
+    padding: 0 10px;
+    background-color: #ffffff;
+}
+.h2-aftergalery, .h3-aftergalery{
+    margin: 20px;
+}
+.p-aftergalery{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin: 20px;
+    font-size: 1rem;
+}
