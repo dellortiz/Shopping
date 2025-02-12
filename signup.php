@@ -1,5 +1,5 @@
 <?php include_once ("common/header.php")?>
-<main class="main-body-index">
+<main class="main-body-index-sign">
 <?php 
 include_once('./common/connexiondb.php'); 
 
@@ -57,10 +57,14 @@ return $stmt->rowCount() > 0;
 <p class="pstart"><a href="index.php"><b>Home</b></a></p>
 </div>
 <section class="moving"> 
+<div class="img-sign">
+  <img src="./asset/una persona intentando conectarse.jpg" alt="">
+</div>
 <div class="Form-box-1">
 <form class="formsign" action="signup.php" method="post" id="registration-form">
 <div class="center">
-<label class="label1" for="email">We need your data bro:</label>
+  <a href="./index.php"><img class="img-sign-logo" src="./asset/logo.png" alt=""></a>
+<label class="label1" for="email">Creating new account ?</label>
 <input class=inputl type="email" name="email" id="email" required placeholder="Email :">
 <span id="email-error" class="error-message"></span>
 
@@ -71,13 +75,19 @@ return $stmt->rowCount() > 0;
 </div>
 <span id="password-error" class="password-message"></span>
 
+<h5>Your password must have :</h5>
+<p>At least one capital letter (ABC...)</p>
+<p>At least one lowercase letter (abc...)</p>
+<p>At least a number (123...)</p>
+<p>At least one special character (!?$&...)</p>
+
 <label  class="label1" for="conditions" id="conditions-label">Privacy Policy : <input type="checkbox" name="conditions" id="conditions" title="The information collected during your registration is 
 processed in accordance with our Privacy Policy. We are committed to protecting your 
 personal data and only using it in the context of your use of the Site. Checking here you agree to share your data with us"required >  </label>
 
 
 
-<input class="botton" type="submit" value="Send">
+<input class="botton-form" type="submit" value="Submit">
 </div>
 <div class="div-underline">
 <p class="h3start">Are you already registered ? <a class="underline" href="signin.php">Do you need to Sign in  ?</a></p>
