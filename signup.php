@@ -75,12 +75,16 @@ return $stmt->rowCount() > 0;
 </div>
 <span id="password-error" class="password-message"></span>
 
-<h5>Your password must have :</h5>
-<p>At least one capital letter (ABC...)</p>
-<p>At least one lowercase letter (abc...)</p>
-<p>At least a number (123...)</p>
-<p>At least one special character (!?$&...)</p>
-
+<div class="div-info">
+<h4>Your password must have :</h4>
+<ol>
+<li><p id="rule-capital">At least one capital letter (ABC...).</p></li>
+<li><p id="rule-lowercase">At least one lowercase letter (abc...).</p></li>
+<li><p id="rule-number">At least a number (123...).</p></li>
+<li><p id="rule-special">At least one special character (!?$&...).</p></li>
+<li><p id="rule-characters">At least 10 characters.</p></li>
+</div>
+</ol>
 <label  class="label1" for="conditions" id="conditions-label">Privacy Policy : <input type="checkbox" name="conditions" id="conditions" title="The information collected during your registration is 
 processed in accordance with our Privacy Policy. We are committed to protecting your 
 personal data and only using it in the context of your use of the Site. Checking here you agree to share your data with us"required >  </label>

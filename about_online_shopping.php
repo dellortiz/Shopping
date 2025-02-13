@@ -25,12 +25,28 @@
         <li class="section-menu-li"><a href="#online-entail"> What does selling online entail?</a></li>
         <li class="section-menu-li "><a href="#virtual-store">What are the elements of a virtual store?</a></li>
         </ul></li>
-        <!-- <li class="section-menu-li "><a href="shoes.php">Shoes</a></li>
-        <li class="section-menu-li "><a href="hats.php">Hats</a></li> -->
+        <li class="section-menu-li">Contact
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
+        </ul></li>
+        <li class="section-menu-li">Home
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="index.php">Home page</a></li>
+        </ul></li>
         </ul>
 </section>
     <div class="div-learn">
 <h1 class="p-main1"> Learn more about online shopping</h1>
+
+<div class="bloque2">
+  <div class="contenedor-slider">
+    <i class="fa-solid fa-chevron-left fa-2x" onclick="cambio(-1)"></i>
+    <div class="slide-container" id="slide-container">
+      <!-- Las imágenes se cargarán dinámicamente -->
+    </div>
+    <i class="fa-solid fa-chevron-right fa-2x" onclick="cambio(1)"></i>
+  </div>
+</div>
 
 <h2 id="shopping-work">How does online shopping work?</h2>
 <p>An online store is a website designed with the objective of selling products or services through electronic commerce tools. 
@@ -57,15 +73,7 @@ cart and an online payment system, which together facilitate digital transaction
 <li>Shipping methods.</li>
 </ol>
 </div>
-<div class="bloque2">
-  <div class="contenedor-slider">
-    <i class="fa-solid fa-chevron-left fa-2x" onclick="cambio(-1)"></i>
-    <div class="slide-container" id="slide-container">
-      <!-- Las imágenes se cargarán dinámicamente -->
-    </div>
-    <i class="fa-solid fa-chevron-right fa-2x" onclick="cambio(1)"></i>
-  </div>
-</div>
+
 </main>
     <script src="./asset/js/pannier.js"></script>
     <script src="./asset/js/signin.js"></script>

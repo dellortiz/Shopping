@@ -28,7 +28,7 @@ if ($id_products) {
             // Si ya hay 2 o más de ese producto en el carrito, no permitir añadir más
             if ($current_quantity >= 10) {
                 $response['status'] = 'error';
-                $response['message'] = 'No puedes añadir más de este artículo, ya tienes el máximo permitido (10).';
+                $response['message'] = 'You cannot add more of this article, you already have the maximum allowed.';
             } else {
                 // Incrementar la cantidad en el carrito
                 $sql = "UPDATE basket SET quantity = quantity + 1 WHERE id_products = :id_products";

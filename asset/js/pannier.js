@@ -59,7 +59,6 @@ function updateBasket() {
         }
     });
 }
-
 function updateQuantity(id_products, quantity) {
     $.ajax({
         url: './common/addtobasket.php', // Usamos el mismo endpoint para actualizar la cantidad
