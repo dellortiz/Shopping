@@ -102,6 +102,8 @@ echo "Error: " . $e->getMessage();
     <script src="./asset/js/pannier.js"></script>
      <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
+    <script src="./asset/js/search.js"></script>
+
     <footer>
 
     </footer>

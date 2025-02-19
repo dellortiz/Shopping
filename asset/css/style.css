@@ -65,13 +65,15 @@ html {
         text-align: center;
         align-items: center;
         padding: 19px;
-        margin-top: 38px;
-        background-image: url(../computers/computers.jpg);
+        background-color: rgb(44, 44, 74);
         background-size: cover;
-        position: fixed; /* Cambiado a fixed */
-        width: 70%; /* Asegura que ocupe todo el ancho */
-        height: auto; /* Mantiene su altura actual */
-        top: 10; 
+        position: fixed;
+        width: 71.5vw;
+        max-width: 72%;
+        height: auto;
+        left: 50%;
+        top: 16%;
+        transform: translate(-50%, -50%);
         z-index: 101;
        }
        .basket-icone{
@@ -113,9 +115,9 @@ html {
     background-image: url(../e-commerce.jpg);
     background-size: cover;
     background-position: center;
-    max-height: 640px;
+    max-height: 650px;
     min-height: 320px;
-    height: 610px;
+    height: 645px;
     color: white;
    
     
@@ -262,9 +264,13 @@ font-family: 'Roboto', sans-serif;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            margin-top: 20.4rem;
+            margin-top: 0.1rem;
             font-size: 2.2rem;
+           
             
+        }
+        .div-header2 h2{
+           margin-bottom: 1rem;  
         }
         .div-header2-1 {
         display: flex;
@@ -334,6 +340,7 @@ font-family: 'Roboto', sans-serif;
             box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.3);
             width: 80%;
             max-width: 400px;
+            border-radius: 10px;
             text-align: center;
             position: relative; /* Añadido para posicionar la cruz */
             }
@@ -424,6 +431,7 @@ width: 71%;
             width: 100%;
        max-width: 700px;
        max-height: 699px;
+       min-height: 697px;
        border-radius: 50px 0px 0px 50px;
        border-top: 1px solid gray;
        border-bottom: 1px solid gray;
@@ -488,17 +496,20 @@ font-size: 45px;
 text-align: center;
 color: rgb(0, 0, 0);
 font-size: 16px;
-
-
+}
+.h3start a:hover{
+color: rgb(255, 145, 0);
 }
 .underline {
 text-align: center;
 color: rgb(0, 0, 0);
 font-size: 14px;
-
 text-decoration: underline;
 text-decoration-color: blue;
-
+}
+.underline:hover{
+color: rgb(255, 145, 0);
+text-decoration-color: rgb(255, 145, 0);
 }
 .div-underline{
 margin: 14px; 
@@ -598,6 +609,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra profesional */
     .botton-form:hover{
         background-color: #0d60b9;
         transition: 0.2s;
+        box-shadow: none;
         }
 .botton, .botton-buy{
 width: 150px;
@@ -618,7 +630,7 @@ text-align: center;
 color: white;
 background-color: #0056b3;
 transition: 0.2s;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra profesional */
+box-shadow: none;
 }
 .botton-buy {
 background-color: #eb3b2b;
@@ -819,7 +831,7 @@ p{
     text-align: center;
     margin-top: 50px;
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     color: #010101;
     text-transform: uppercase; /* Texto en mayúsculas */
     letter-spacing: 2px; /* Espaciado entre letras */
@@ -1220,7 +1232,7 @@ a{
     background-color: #f0f0f0;
     border-radius: 5px;
     text-align: center;
-    font-size: 1.2rem; /* Ajusta según tus preferencias */
+    font-size: 1rem; /* Ajusta según tus preferencias */
     font-weight: 600;
     position: absolute;
     top: 0;
@@ -1236,13 +1248,16 @@ a{
 .span-contact-error{
     border: 1px solid rgb(198, 4, 4);
     display: block;
+    justify-content: center;
+    align-items: center;
+text-align: center;
     padding: 10px;
     color: rgb(128, 0, 0);
     background-color: #f0f0f0;
     border-radius: 5px;
     text-align: center;
     font-weight: 600;
-    font-size: 1.2rem; /* Ajusta según tus preferencias */
+    font-size: 1rem; /* Ajusta según tus preferencias */
     box-sizing: border-box;
     position: absolute;
     top: 0;
@@ -1362,10 +1377,6 @@ a{
     .dropdown-content a img {
         margin-right: 0.5rem; /* Añade un margen para separar la imagen del texto */
     }    
-
-
-
-
 .dropdown-content.show {
     top: 50px; /* Ajusta este valor según sea necesario */
     opacity: 1;
@@ -1399,4 +1410,71 @@ a{
     font-size: 1.2em; /* Tamaño de la letra, ajusta según sea necesario */
     
 }
-
+/*----------------------------------------------popup-log-out------------------------------------------*/
+.popup-contentlogout {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    position: relative;
+}
+/*----------------------------------------------Search-bar------------------------------------------*/
+.search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 18rem;
+    position: relative;
+  }
+  
+  .search-form {
+    display: flex;
+    width: 100%;
+    max-width: 30rem;
+    min-width: 10rem;
+    position: relative;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    flex: 1;
+    height: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-button {
+    background-color: white;
+    cursor: pointer;
+    padding: 0 11px;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    height: 44px;
+  }
+  .search-button:hover{
+    background-color: rgb(240, 244, 252);
+  }
+  
+  .img-search {
+    width: 20px;
+    height: 20px;
+  }
+.highlight {
+    border: 2px solid rgb(107, 114, 214);
+}

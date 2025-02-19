@@ -12,7 +12,7 @@ try {
 $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$query = "SELECT * FROM user WHERE email = :email LIMIT 1";
+$query = "SELECT * FROM users WHERE email = :email LIMIT 1";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':email', $email);
 $stmt->execute();

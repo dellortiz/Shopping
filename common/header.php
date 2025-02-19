@@ -43,8 +43,18 @@ $pageTitle = getPageTitle($currentPage);
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
+    <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
+    <input type="hidden" name="source" value="header">
+    <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+    <input type="text" name="query" placeholder="Search..." class="search-bar" id="header-search-bar">
+    <button type="submit" class="search-button">
+        <img src="./asset/search.png" alt="Search" class="img-search">
+    </button>
+</form>
+
+
     <ul class="section-ul-header2">
-        <?php if(!isset($_SESSION["email"]) && $currentPage !== 'signin.php' && $currentPage !== 'signup.php') : ?>
+        <?php if(!isset($_SESSION["email"]) && $currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php') : ?>
             <a class="a-header" href="#" id="signInBtn"><li class="li-header2">Sign in</li></a>
         <?php elseif(isset($_SESSION["email"])) : ?> 
             <div class="dropdown">
@@ -55,7 +65,7 @@ $pageTitle = getPageTitle($currentPage);
                         $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
                         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         
-                        $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :email");
+                        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
                         $stmt->execute(['email' => $_SESSION["email"]]);
                         
                         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -91,7 +101,7 @@ $pageTitle = getPageTitle($currentPage);
                             echo'<hr>';
                             echo '<li><a class="dropdown-item" href="#">Another action</a></li>';
                             echo'<hr>';
-                            echo '<li><a class="dropdown-item" href="./common/deconnexion.php"><img src="./asset/power.png" alt="power">Log out</a></li>';
+                            echo '<li id="logoutboton"><a class="dropdown-item" href="./common/deconnexion.php"><img src="./asset/power.png" alt="power">Log out</a></li>';
                         }
                     } catch (PDOException $err) {
                         $_SESSION["compte-erreur-sql"] = $err->getMessage();
@@ -136,46 +146,77 @@ $pageTitle = getPageTitle($currentPage);
 <span id="code1-error" class="code-message" style="top: 53%;"></span>
 <input class="botton-form" type="submit" value="Submit">
 </div>
-<p class="h3start"><a href="signup.php">You don't have an account yet ?</a></p>
+<p class="h3start"><a href="signup_verification_email.php">You don't have an account yet ?</a></p>
 </form>
 </div>
 </section>
 </div>
 </div>
 <?php endif; ?>
+<div id="logout" class="popup">
+        <div class="popup-contentlogout">
+            <div class="center">
+                <div>
+                <h2>Log out</h2>
+                <p>Are you sure you want to log out ?</p>
+                <button class="botton" id="logoutBtn">Yes</button>
+                <button class="botton-buy" id="cancelBtn">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("userIcon").onclick = function(event) {
-        event.stopPropagation(); // Evita que el evento se propague a window.onclick
-        var dropdown = document.getElementById("myDropdown");
-        if (dropdown.classList.contains("show")) {
-            dropdown.classList.remove("show");
-            setTimeout(function() {
-                dropdown.style.display = "none";
-            }, 500); // Espera a que termine la transición
-        } else {
-            dropdown.style.display = "block";
-            setTimeout(function() {
-                dropdown.classList.add("show");
-            }, 10); // Pequeño retraso para permitir que el display se aplique
-        }
-    };
+    var userIcon = document.getElementById("userIcon");
+    var dropdown = document.getElementById("myDropdown");
+    var closeBtn = document.getElementById("closeBtn"); // Añade otras referencias si las necesitas
 
-    window.onclick = function(event) {
-        var dropdown = document.getElementById("myDropdown");
-        // Si el clic no es en el ícono ni en el dropdown, cerrar el dropdown
-        if (!event.target.closest('.dropdown') && dropdown.classList.contains('show')) {
-            dropdown.classList.remove('show');
-            setTimeout(function() {
-                dropdown.style.display = "none";
-            }, 500); // Espera a que termine la transición
-        }
-    };
+    if (userIcon && dropdown) {
+        userIcon.onclick = function(event) {
+            event.stopPropagation(); // Evita que el evento se propague a window.onclick
+            if (dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+                setTimeout(function() {
+                    dropdown.style.display = "none";
+                }, 500); // Espera a que termine la transición
+            } else {
+                dropdown.style.display = "block";
+                setTimeout(function() {
+                    dropdown.classList.add("show");
+                }, 10); // Pequeño retraso para permitir que el display se aplique
+            }
+        };
+
+        window.onclick = function(event) {
+            // Si el clic no es en el ícono ni en el dropdown, cerrar el dropdown
+            if (!event.target.closest('.dropdown') && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                setTimeout(function() {
+                    dropdown.style.display = "none";
+                }, 500); // Espera a que termine la transición
+            }
+        };
+    } else {
+        console.log("Elementos necesarios no encontrados en el DOM");
+    }
 });
 
 </script>
 <script src="./asset/js/reload.js" async></script>
-
+<script src="./asset/js/logout.js"></script>
+<script>
+   
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchBar = document.getElementById('header-search-bar');
+        if (searchBar && searchBar.value === '' && '<?php echo isset($_GET['error']); ?>') {
+            searchBar.placeholder = 'No results found';
+            setTimeout(function() {
+                searchBar.placeholder = 'Search...';
+            }, 3000); // 3000 milisegundos = 3 segundos
+        }
+    });
+    </script>  
+</script>
 </body>
 </html>

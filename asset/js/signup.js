@@ -1,23 +1,23 @@
 $(document).ready(function() {
-    $('#email').on('input', function() {
-        var email = $(this).val();
-        if (email === '') {
-            $('#email-error').text('').css('color', '');
-        } else {
-            $.ajax({
-                url: 'fetch/validate_email.php',
-                method: 'POST',
-                data: { email: email },
-                success: function(response) {
-                    if (response) {
-                        $('#email-error').text(response).css('color', 'red');
-                    } else {
-                        $('#email-error').text('Email valid').css('color', 'rgb(58, 180, 58)');
-                    }
-                }
-            });
-        }
-    });
+    // $('#email').on('input', function() {
+    //     var email = $(this).val();
+    //     if (email === '') {
+    //         $('#email-error').text('').css('color', '');
+    //     } else {
+    //         $.ajax({
+    //             url: 'fetch/validate_email.php',
+    //             method: 'POST',
+    //             data: { email: email },
+    //             success: function(response) {
+    //                 if (response) {
+    //                     $('#email-error').text(response).css('color', 'red');
+    //                 } else {
+    //                     $('#email-error').text('Email valid').css('color', 'rgb(58, 180, 58)');
+    //                 }
+    //             }
+    //         });
+    //     }
+    // });
 
     $('#password').on('input', function() {
         var email = $('#email').val();

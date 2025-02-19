@@ -32,12 +32,24 @@ session_start();
                             </a>
                         <?php else : ?>
                             <a class="a-header" href="./common/deconnexion.php">
-                                <li class="li-header2">Log out</li>
+                                <li id="logoutboton" class="li-header2">Log out</li>
                             </a>
                         <?php endif; ?>
                     </ul>
                 </div>
+
                 <div class="div-header2">
+                    <div class="search-container">
+                    <form class="search-form" action="search.php" method="GET">
+            <input type="hidden" name="source" value="index">
+            <input type="text" name="query" placeholder="Search..." class="search-bar" id="search-bar" 
+                   value="<?php echo isset($_GET['error']) ? '' : (isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''); ?>">
+            <button type="submit" class="search-button">
+                <img src="./asset/search.png" alt="Buscar" class="img-search">
+            </button>
+            
+        </form>
+                    </div>
                     <h2>Your online store</h2>
                     <div class="div-header2-1">
                         <a href="clothes.php">
@@ -122,7 +134,7 @@ session_start();
             <div class="div-main1">
                 <p class="p-main1">The advantages of buying with us</p>
                 <ul class="ul-main2">
-                     <li class="li-main2"><img class="logo-main3" src="./asset/service.png" alt="euro-img">Best Service</li>
+                    <li class="li-main2"><img class="logo-main3" src="./asset/service.png" alt="euro-img">Best Service</li>
                     <li class="li-main2"><img class="logo-main2" src="./asset/euro.avif" alt="euro-img">Best Price </li>
                     <li class="li-main2"><img class="logo-main3" src="./asset/guaranties.png" alt="euro-img">Best Guarantees</li>
                     <li class="li-main2"><img class="logo-main3" src="./asset/sales.png" alt="euro-img">Best Sales</li>
@@ -161,26 +173,26 @@ session_start();
                 </details>
                 <details class="details-section">
                     <summary class="summary-section">Learn more about us and our additional services :</summary>
-                <ol>
-                    <h3 class="h3-aftergalery">Loyalty Program: </h3>
-                    <li>
-                        <p class="p-aftergalery">Accumulate points on every purchase and exchange them for discounts and gifts.</p>
-                    </li>
+                    <ol>
+                        <h3 class="h3-aftergalery">Loyalty Program: </h3>
+                        <li>
+                            <p class="p-aftergalery">Accumulate points on every purchase and exchange them for discounts and gifts.</p>
+                        </li>
 
-                    <h3 class="h3-aftergalery">24/7 Customer Service:</h3>
-                    <li>
-                        <p class="p-aftergalery"> We are available to answer your questions at any time.</p>
-                    </li>
+                        <h3 class="h3-aftergalery">24/7 Customer Service:</h3>
+                        <li>
+                            <p class="p-aftergalery"> We are available to answer your questions at any time.</p>
+                        </li>
 
-                    <h3 class="h3-aftergalery">Satisfaction Guarantee: </h3>
-                    <li>
-                        <p class="p-aftergalery">If you are not satisfied with a product, we offer you quick and effective solutions.</p>
-                    </li>
+                        <h3 class="h3-aftergalery">Satisfaction Guarantee: </h3>
+                        <li>
+                            <p class="p-aftergalery">If you are not satisfied with a product, we offer you quick and effective solutions.</p>
+                        </li>
 
-                    <h3 class="h3-aftergalery">Safety and Hygiene Measures: </h3>
-                    <li>
-                        <p class="p-aftergalery">Especially in current times, we guarantee that all our processes meet the highest health standards.</p>
-                    </li>
+                        <h3 class="h3-aftergalery">Safety and Hygiene Measures: </h3>
+                        <li>
+                            <p class="p-aftergalery">Especially in current times, we guarantee that all our processes meet the highest health standards.</p>
+                        </li>
                 </details>
                 <details class="details-section">
                     <summary class="summary-section">Why choose us ?</summary>
@@ -206,8 +218,8 @@ session_start();
                     </li>
 
                     <h3 class="h3-aftergalery">Join the <u>shopping</u> community and discover a new way to shop online!</h3>
-                </ol>
-                        </p>
+                    </ol>
+                    </p>
                 </details>
             </div>
         </section>
@@ -238,13 +250,25 @@ session_start();
                                 <img src="funcs/genera_codigo.php" alt="Captcha code " id="imgcode">
                                 <button class="botton-reload" type="button" id="reload">+</button>
                             </div>
-                            <span id="code1-error" class="code-message" style="top: 53%;" ></span>
+                            <span id="code1-error" class="code-message" style="top: 53%;"></span>
                             <input class="botton-form" type="submit" value="Submit">
                         </div>
-                        <p class="h3start"><a href="signup.php">You don't have an account yet ?</a></p>
+                        <p class="h3start"><a href="signup_verification_email.php">You don't have an account yet ?</a></p>
                     </form>
                 </div>
             </section>
+        </div>
+    </div>
+    <div id="logout" class="popup">
+        <div class="popup-contentlogout">
+            <div class="center">
+                <div>
+                    <h2>Log out</h2>
+                    <p>Are you sure you want to log out ?</p>
+                    <button class="botton" id="logoutBtn">Yes</button>
+                    <button class="botton-buy" id="cancelBtn">No</button>
+                </div>
+            </div>
         </div>
     </div>
     <footer>
@@ -253,7 +277,20 @@ session_start();
     <script src="./asset/js/reload.js"></script>
     <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
-   
+    <script src="./asset/js/logout.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchBar = document.getElementById('search-bar');
+            if (searchBar && searchBar.value === '' && '<?php echo isset($_GET['error']); ?>') {
+                searchBar.placeholder = 'No results founds...';
+                setTimeout(function() {
+                    searchBar.placeholder = 'Search...';
+                }, 3000); // 3000 milisegundos = 3 segundos
+            }
+        });
+    </script>
 </body>
 
 </html>

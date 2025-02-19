@@ -3,6 +3,7 @@ var popup = document.getElementById("signInPopup");//popup
 var closeBtn = document.getElementsByClassName("close")[0];
 
 // Mostrar el popup al hacer clic en "Sign in"
+if (signInBtn) {
 signInBtn.onclick = function() {
 popup.style.display = "block";
 }
@@ -28,4 +29,4 @@ passdeux.type = "text";
 passdeux.type = "password";
 }
 });
-
+}

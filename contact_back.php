@@ -83,7 +83,7 @@ try {
         $mail->Port = 587; // o 465 si prefieres usar SSL
 
         // Recipients
-        $mail->setFrom($email, 'Shopping'); // Dirección del remitente es el email ingresado por el usuario
+        $mail->setFrom($email, 'noreply@shopping.com'); // Dirección del remitente es el email ingresado por el usuario
         $mail->addAddress('jo6024934@gmail.com'); // Reemplaza con tu dirección de correo
 
         // Content

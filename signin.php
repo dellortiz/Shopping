@@ -5,7 +5,7 @@
 <? session_start() ?>
 <main class="main-body-index-sign">
 <div class="div-sign">
-<p class="pstart "><a href="signup.php"><b>Sign up</b></a></p>
+<p class="pstart "><a href="signup_verification_email.php"><b>Sign up</b></a></p>
 <p class="pstart up"><b>Sign in</b></p>
 <p class="pstart"><a href="index.php"><b>Home</b></a></p>
 </div>
@@ -36,7 +36,7 @@
 
 <input class="botton-form" type="submit" value="Submit">
 </div>
-<p class="h3start"><a href="signup.php">Do you need to Sign up ?</a></p>
+<p class="h3start"><a href="signup_verification_email.php">Do you need to Sign up ?</a></p>
 <span style="font-size: 16px; color:red;"></span>
 </form>
 

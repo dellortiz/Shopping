@@ -81,12 +81,5 @@
         <!-- Span para mostrar mensajes -->
 
 </main>
-<script>
-var verificationmessage = document.getElementById('message_id');
-if (verificationmessage) {
-    // Ocultar el mensaje después de 50 segundos
-    setTimeout(function () {
-        verificationmessage.style.display = 'none';
-    }, 12000);
-}
-</script>
+<script src="./asset/js/message_id.js"></script>
+<script src="./asset/js/script.js"></script>
