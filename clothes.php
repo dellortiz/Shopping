@@ -1,5 +1,5 @@
 <?php include_once('./common/header.php')?>
-    <main class="main-body-index">
+<main class="main-body-index">
 <section class="select-menu">
     <ul id="menu">
         <li class="section-menu-li up">Fashion
@@ -102,19 +102,21 @@ echo "Error: " . $e->getMessage();
 }
 ?>
 </div>
+    
     <div class="bloque-pannier">
-</div>
+        <img src="./asset/shopping-cart.png" alt="">
+        <p>Hola Mundo</p>
+        <p>lolo</p>
     </div>
-
 </section>
- </main>
-    <script src="./asset/js/pannier.js"></script>
-    <script src="./asset/js/signin.js"></script>
-    <script src="./asset/js/script.js"></script>
-    <script src="./asset/js/message_id.js"></script>
-    <script src="./asset/js/search.js"></script>
-    <footer>
 
-    </footer>
+<script src="./asset/js/pannier.js"></script>
+<script src="./asset/js/signin.js"></script>
+<script src="./asset/js/script.js"></script>
+<script src="./asset/js/message_id.js"></script>
+<script src="./asset/js/search.js"></script>
+<footer>
+
+</footer>
 </body>
 </html>

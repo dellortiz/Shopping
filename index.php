@@ -278,19 +278,9 @@ session_start();
     <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/logout.js"></script>
+    <script src="./asset/js/search.js"></script>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var searchBar = document.getElementById('search-bar');
-            if (searchBar && searchBar.value === '' && '<?php echo isset($_GET['error']); ?>') {
-                searchBar.placeholder = 'No results founds...';
-                setTimeout(function() {
-                    searchBar.placeholder = 'Search...';
-                }, 3000); // 3000 milisegundos = 3 segundos
-            }
-        });
-    </script>
+    
 </body>
 
 </html>

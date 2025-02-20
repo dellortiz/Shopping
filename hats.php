@@ -1,8 +1,8 @@
 <?php include_once('./common/header.php')?>
-    <main class="main-body-index">
+<main class="main-body-index">
 <section class="select-menu">
-<ul id="menu">
-<li class="section-menu-li up">Fashion
+    <ul id="menu">
+        <li class="section-menu-li up">Fashion
         <ul class="submenu">
         <li class="section-menu-li"><a href="clothes.php">Clothes</a></li>
         <li class="section-menu-li "><a href="shoes.php">Shoes</a></li>
@@ -33,7 +33,7 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="index.php">Home page</a></li>
         </ul></li>
-        </ul>
+    </ul>
 </section>
 <div class="div-main">
 <h2 class="h2pages ">Hats</h2>
@@ -59,6 +59,12 @@ $qry->execute();
 $products = $qry->fetchAll(PDO::FETCH_ASSOC);
 foreach ($products as $product) {
 ?>
+<!-- <?php
+echo '<pre>';
+var_dump($products);
+echo '</pre>';
+?> -->
+
 <article class="article" id="idarticle<?= $product['id_products'] ?>" onclick="showPopup('popup<?= $product['id_products'] ?>')">
 <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
 <div class="article-text">
@@ -66,6 +72,7 @@ foreach ($products as $product) {
 <p><?= htmlspecialchars($product['name']) ?></p>
 </div>
 </article>
+
 
 <div id="popup<?= $product['id_products'] ?>" class="popuparticle" onclick="hidePopup('popup<?= $product['id_products'] ?>')">
 <div class="popup-content" onclick="event.stopPropagation()">
@@ -81,10 +88,12 @@ foreach ($products as $product) {
 <form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
     <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
     <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
+
 <input class="botton" type="submit" value="Buy Now">
 </article>
 </div>
 </div>
+
 <?php
 }
 } catch (PDOException $e) {
@@ -92,20 +101,20 @@ echo "Error: " . $e->getMessage();
 }
 ?>
 </div>
-
-<div class="bloque-pannier">
+    
+    <div class="bloque-pannier">
+        <img src="./asset/shopping-cart.png" alt="">
         <p>Hola Mundo</p>
+        <p>lolo</p>
     </div>
-
 </section>
 
-    <script src="./asset/js/pannier.js"></script>
-     <script src="./asset/js/signin.js"></script>
-    <script src="./asset/js/script.js"></script>
-    <script src="./asset/js/search.js"></script>
+<script src="./asset/js/pannier.js"></script>
+<script src="./asset/js/signin.js"></script>
+<script src="./asset/js/script.js"></script>
+<script src="./asset/js/search.js"></script>
+<footer>
 
-    <footer>
-
-    </footer>
+</footer>
 </body>
 </html>

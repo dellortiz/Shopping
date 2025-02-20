@@ -11,13 +11,16 @@ if (isset($_GET['query'])) {
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         $search_query = htmlspecialchars($_GET['query']);
-        $sql = "SELECT * FROM products WHERE LOWER(name) LIKE LOWER(:query) 
+        $exact_query = "^" . preg_quote($search_query) . "$";
+        $sql = "SELECT * FROM products WHERE LOWER(name) REGEXP LOWER(:exact_query)
+                OR LOWER(name) LIKE LOWER(:query) 
                 OR SOUNDEX(name) = SOUNDEX(:query) 
                 OR LOWER(category) LIKE LOWER(:query) 
                 OR SOUNDEX(category) = SOUNDEX(:query)
-                OR price LIKE :query";
+                OR price LIKE :query 
+                ORDER BY CASE WHEN LOWER(name) REGEXP LOWER(:exact_query) THEN 0 ELSE 1 END, LENGTH(name) - LENGTH(REPLACE(name, ' ', '')) ASC";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['query' => '%' . $search_query . '%']);
+        $stmt->execute(['exact_query' => $exact_query, 'query' => '%' . $search_query . '%']);
 
         $results = $stmt->fetchAll();
 
@@ -42,7 +45,6 @@ if (isset($_GET['query'])) {
                         header("Location: shoes.php?id=$id");
                         break;
                     case 'hats':
-                        error_log("Redirigiendo a hats.php?id=$id");
                         header("Location: hats.php?id=$id");
                         break;
                     case 'android':
@@ -67,3 +69,25 @@ if (isset($_GET['query'])) {
     header("Location: $currentPage?error=No+search+query+has+been+provided.");
 }
 ?>
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+function divide($numerator, $denominator) {
+    if ($denominator == 0) {
+        throw new Exception("Division by zero.");
+    }
+    return $numerator / $denominator;
+}
+
+try {
+    $result = divide(10, $denom); // Error: $denom no está definido
+    echo "Result: " . $result;
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+    error_log($e->getMessage(), 3, "/path/to/your/error.log");
+}
+
+$variable = "algo";
+var_dump($variable);

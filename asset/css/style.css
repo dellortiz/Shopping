@@ -11,7 +11,9 @@
 /* //-------------------------------------------------header------------------------------------------------// */
 html {
     scroll-padding-top: 260px; /* Ajusta este valor según la altura de tu encabezado fijo */
-}
+    scroll-behavior: smooth; /* Desplazamiento suave */
+    }
+
 .section-header {
     display: flex;
     justify-content: space-between;
