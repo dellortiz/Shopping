@@ -329,8 +329,8 @@ font-family: 'Roboto', sans-serif;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(46, 47, 100, 0.2); 
-            backdrop-filter: blur(1.5px); 
+            background-color: rgba(0,0,0,.6);
+            backdrop-filter: blur(2px);
            
         }
         
@@ -1008,8 +1008,8 @@ article {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(46, 47, 100, 0.2); 
-    backdrop-filter: blur(1.5px); 
+    background-color: rgba(0,0,0,.6);
+    backdrop-filter: blur(2px);
     justify-content: center;
     align-items: center;
     }
@@ -1479,4 +1479,61 @@ text-align: center;
   }
 .highlight {
     border: 2px solid rgb(107, 114, 214);
+}
+/*---------------------------------------------- left menu ------------------------------------------*/
+.menu {
+    opacity: 0; /* Inicialmente transparente */
+    background-color: #fff;
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 0; /* Alinea al principio */
+    left: 0; /* Inicialmente fuera de la vista */
+    transform: translateX(-100%); /* Ajusta la posición para salir de la vista */
+    height: 100%; /* Ocupar toda la altura de la pantalla */
+    z-index: 1100;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+}
+
+.menu.show {
+    opacity: 1;
+    transform: translateX(0); /* Desplaza el menú a la vista */
+}
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+.menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.popupleft {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    z-index: 102;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,.6);
+    backdrop-filter: blur(2px);
+    opacity: 0; /* Inicialmente transparente */
+    transition: opacity 0.5s ease; /* Transición suave */
+}
+
+.popupleft.show {
+    display: block;
+    opacity: 1; /* Visible */
+}
+
+.no-scroll {
+    overflow: hidden; /* Evita el desplazamiento */
 }

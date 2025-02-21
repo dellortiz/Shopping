@@ -1,3 +1,5 @@
 <footer>
-    
+    <section>
+        
+    </section>
 </footer>

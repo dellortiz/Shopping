@@ -20,8 +20,15 @@ session_start();
 
         <section class="section-header-index" id="headerSection">
             <div class="div-background">
+
                 <div class="div-header1">
                     <ul class="ul-header1">
+                        <li class="li-header1">
+                        <div id="main">
+        <button class="openbtn" id="leftmenuboton" onclick="openMenu()">☰ </button>
+    </div>
+
+                        </li>
                         <li class="li-header1"><a class="a-header" href="#">Shopping</a></li>
                         <li class="li-header1"><a class="a-header" href="#"><img class="logo-header" src="./asset/logo1.png" alt="logo"></a></li>
                     </ul>
@@ -37,18 +44,17 @@ session_start();
                         <?php endif; ?>
                     </ul>
                 </div>
-
                 <div class="div-header2">
                     <div class="search-container">
-                    <form class="search-form" action="search.php" method="GET">
-            <input type="hidden" name="source" value="index">
-            <input type="text" name="query" placeholder="Search..." class="search-bar" id="search-bar" 
-                   value="<?php echo isset($_GET['error']) ? '' : (isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''); ?>">
-            <button type="submit" class="search-button">
-                <img src="./asset/search.png" alt="Buscar" class="img-search">
-            </button>
-            
-        </form>
+                        <form class="search-form" action="search.php" method="GET">
+                            <input type="hidden" name="source" value="index">
+                            <input type="text" name="query" placeholder="Search..." class="search-bar" id="search-bar"
+                                value="<?php echo isset($_GET['error']) ? '' : (isset($_GET['query']) ? htmlspecialchars($_GET['query']) : ''); ?>">
+                            <button type="submit" class="search-button">
+                                <img src="./asset/search.png" alt="Buscar" class="img-search">
+                            </button>
+
+                        </form>
                     </div>
                     <h2>Your online store</h2>
                     <div class="div-header2-1">
@@ -271,16 +277,68 @@ session_start();
             </div>
         </div>
     </div>
-    <footer>
-
-    </footer>
+    <div id="menuleft" class="popupleft"></div>
+    <div class="menu" id="menuContent">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+        <a href="index.php">Home</a>
+        <a href="signup_verification_email.php">Sign up</a>
+        <a href="signin.php">Sign in</a>
+        <a href="clothes.php">Clothes</a>
+        <a href="shoes.php">Shoes</a>
+        <a href="hats.php">Hats</a>
+        <a href="shopping.php">Shopping</a>
+    </div>
     <script src="./asset/js/reload.js"></script>
     <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/logout.js"></script>
     <script src="./asset/js/search.js"></script>
+    <script >
+function openMenu() {
+            var menuPopup = document.getElementById('menuleft');
+            var menuContent = document.getElementById('menuContent');
+            menuPopup.style.display = 'block';
+            setTimeout(function() {
+                menuPopup.classList.add('show');
+                menuContent.classList.add('show');
+            }, 10); // Pequeño retraso para permitir que el display se aplique
 
-    
+            document.body.classList.add('no-scroll'); // Deshabilita el desplazamiento
+        }
+
+        function closeMenu() {
+            var menuPopup = document.getElementById('menuleft');
+            var menuContent = document.getElementById('menuContent');
+            menuContent.classList.remove('show');
+            menuPopup.classList.remove('show');
+            document.body.classList.remove('no-scroll'); // Habilita el desplazamiento
+
+            setTimeout(function() {
+                menuPopup.style.display = 'none';
+            }, 500); // Tiempo igual a la duración de la transición
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var openMenuBtn = document.getElementById('leftmenuboton');
+            var closeMenuBtn = document.getElementById('closeMenuBtn');
+
+            if (openMenuBtn) {
+                openMenuBtn.addEventListener('click', openMenu);
+            }
+
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', closeMenu);
+            }
+
+            var menuPopup = document.getElementById('menuleft');
+            menuPopup.addEventListener('click', function(event) {
+                if (event.target === menuPopup) {
+                    closeMenu();
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

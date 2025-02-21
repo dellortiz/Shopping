@@ -62,7 +62,8 @@ try {
     }
 
     // Generate a random user ID
-    function generateRandomID($length = 16) {
+    function generateRandomID($length = 16)
+    {
         return bin2hex(random_bytes($length / 2));
     }
 
@@ -151,4 +152,3 @@ try {
     header("location:404.php");
     exit();
 }
-?>
