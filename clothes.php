@@ -29,6 +29,16 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
         </ul></li>
+        <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
+        <?php if (isset($_SESSION['email'])): ?>
+        <li class="section-menu-li">Profile
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="profile.php"> My profile</a></li>
+        </ul></li>
+        <?php endif; ?>
         <li class="section-menu-li">Home
         <ul class="submenu">
         <li class="section-menu-li"><a href="index.php">Home page</a></li>
@@ -89,8 +99,7 @@ echo '</pre>';
 <form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
     <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
     <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
-
-<input class="botton" type="submit" value="Buy Now">
+</form>
 </article>
 </div>
 </div>

@@ -24,7 +24,7 @@ session_start();
                 <div class="div-header1">
                     <ul class="ul-header1">
                         <li class="li-header1">
-                        <div id="main">
+                        <div id="main" class="header-main">
         <button class="openbtn" id="leftmenuboton" onclick="openMenu()">☰ </button>
     </div>
 
@@ -277,68 +277,130 @@ session_start();
             </div>
         </div>
     </div>
+
     <div id="menuleft" class="popupleft"></div>
-    <div class="menu" id="menuContent">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
-        <a href="index.php">Home</a>
+    <div class="menu" id="menuContent"> 
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"> &times;</a>
+    <?php if (isset($_SESSION["email"])): ?>    
+ <?php include_once("./common/connexiondb.php"); 
+   try {
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $_SESSION["email"]]);
+    
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $username = explode('@', $user['email'])[0];
+    echo '<div><p class="menu-left-first" style="color: black; font-size:1.5rem; font: wegith 500px;">Hello,&nbsp '.htmlspecialchars($username).'</p></div><hr>';
+    }
+} catch (PDOException $err) {
+    $_SESSION["compte-erreur-sql"] = $err->getMessage();
+    header("location:pageerreur.php");
+    exit();
+}
+?>
+ <?php else: ?>
+    <a  href="#" class="menu-left-first"  style="color: black; font-size:1.7rem; cursor: default;">Hello</a><hr>
+    
+    <?php endif; ?>       
+        <a  href="index.php" class="menu-left-first">Home</a>
+        <?php if (!isset($_SESSION["email"])): ?>
         <a href="signup_verification_email.php">Sign up</a>
         <a href="signin.php">Sign in</a>
-        <a href="clothes.php">Clothes</a>
-        <a href="shoes.php">Shoes</a>
-        <a href="hats.php">Hats</a>
-        <a href="shopping.php">Shopping</a>
+        <?php endif; ?>
+        <a href="#" id="shoppingLink">Shopping</a>
+        <a href="contact.php">Contact</a>
+        <a href="about_online_shopping.php">About Online Shopping</a>
     </div>
+    <div class="menu" id="submenuContent" style="display: none; background-color:rgb(36, 36, 73);">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"> &times;</a>
+    <a href="#" id="backToMainMenu" style="font-size: 1.4rem;" class="menu-left-first"><&nbsp Back</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:rgb(220, 220, 238); color:black;">Fashion</a>
+    <a href="clothes.php">Clothes</a>
+    <a href="hats.php">Hats</a>
+    <a href="shoes.php">Shoes</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:rgb(220, 220, 238); color:black;">Computers</a>
+    <a href="computers.php"> Desktop Computers</a>
+    <a href="laptops.php"> Laptops</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:rgb(220, 220, 238); color:black;">Phones</a>
+    <a href="phones.php">IPhone</a>
+    <a href="android.php">Android</a>
+    </div>
+    <!-- <?php
+session_start();
+include_once("./common/connexiondb.php");
+
+$user_has_data = false;
+
+// Check if the user is logged in by verifying the email session variable
+if (isset($_SESSION['email'])) {
+    // Get user id from session
+    $id_user = $_SESSION['id_user'];
+    try {
+        $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+        // Verify if user data exists using id_user
+        $sql = "SELECT COUNT(*) FROM user_data WHERE id_user = :id_user";
+        $qry = $pdo->prepare($sql);
+        $qry->execute([':id_user' => $id_user]);
+        $count = $qry->fetchColumn();
+
+        if ($count > 0) {
+            $user_has_data = true;
+        }
+        unset($pdo);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
+
+<script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            <?php if (isset($_SESSION['email']) && !$user_has_data): ?>
+            document.getElementById('personalinformation').style.display = 'block';
+            <?php endif; ?>
+
+            document.getElementById('personalBtn').addEventListener('click', function() {
+                // Redirect to personal information registration page
+                window.location.href = 'user_data.php';
+            });
+
+            document.getElementById('cancelPersonalBtn').addEventListener('click', function() {
+                // Close the popup
+                document.getElementById('personalinformation').style.display = 'none';
+            });
+        });
+    </script> -->
+    <div id="personalinformation" class="popup">
+        <div class="popup-contentlogout">
+            <div class="center">
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Would you like to register your personal information such as address, name, telephone...... for future purchases now  ?</p>
+                    <button class="botton" id="personalBtn">Yes</button>
+                    <button class="botton-buy" id="cancelPersonalBtn">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+   
+    
     <script src="./asset/js/reload.js"></script>
     <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/logout.js"></script>
     <script src="./asset/js/search.js"></script>
-    <script >
-function openMenu() {
-            var menuPopup = document.getElementById('menuleft');
-            var menuContent = document.getElementById('menuContent');
-            menuPopup.style.display = 'block';
-            setTimeout(function() {
-                menuPopup.classList.add('show');
-                menuContent.classList.add('show');
-            }, 10); // Pequeño retraso para permitir que el display se aplique
+    <script src="./asset/js/menuleft.js"></script>
+    <script>
 
-            document.body.classList.add('no-scroll'); // Deshabilita el desplazamiento
-        }
-
-        function closeMenu() {
-            var menuPopup = document.getElementById('menuleft');
-            var menuContent = document.getElementById('menuContent');
-            menuContent.classList.remove('show');
-            menuPopup.classList.remove('show');
-            document.body.classList.remove('no-scroll'); // Habilita el desplazamiento
-
-            setTimeout(function() {
-                menuPopup.style.display = 'none';
-            }, 500); // Tiempo igual a la duración de la transición
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var openMenuBtn = document.getElementById('leftmenuboton');
-            var closeMenuBtn = document.getElementById('closeMenuBtn');
-
-            if (openMenuBtn) {
-                openMenuBtn.addEventListener('click', openMenu);
-            }
-
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', closeMenu);
-            }
-
-            var menuPopup = document.getElementById('menuleft');
-            menuPopup.addEventListener('click', function(event) {
-                if (event.target === menuPopup) {
-                    closeMenu();
-                }
-            });
-        });
     </script>
-
 </body>
 
 </html>

@@ -29,6 +29,12 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
         </ul></li>
+        <?php if (isset($_SESSION['email'])): ?>
+        <li class="section-menu-li">Profile
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="profile.php"> My profile</a></li>
+        </ul></li>
+        <?php endif; ?>
         <li class="section-menu-li">Home
         <ul class="submenu">
         <li class="section-menu-li"><a href="index.php">Home page</a></li>

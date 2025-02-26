@@ -40,10 +40,13 @@ $pageTitle = getPageTitle($currentPage);
 <header>
 <section class="section-header">
     <ul class="section-ul-header1">
+        <li class="section-li-header1"> <div id="main" class="header-main-up">
+        <button class="openbtn" id="leftmenuboton" onclick="openMenu()">☰ </button>
+    </div></li>
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
-    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php') : ?>
+    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php') : ?>
     <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
         <input type="hidden" name="source" value="header">
         <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -167,6 +170,59 @@ $pageTitle = getPageTitle($currentPage);
             </div>
         </div>
     </div>
+    <div id="menuleft" class="popupleft"></div>
+    <div class="menu" id="menuContent"> 
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"> &times;</a>
+    <?php if (isset($_SESSION["email"])): ?>    
+ <?php include_once("./common/connexiondb.php"); 
+   try {
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $_SESSION["email"]]);
+    
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        $username = explode('@', $user['email'])[0];
+    echo '<div><p class="menu-left-first" style="color: black; font-size:1.5rem; font: wegith 500px;">Hello,&nbsp '.htmlspecialchars($username).'</p></div><hr>';
+    }
+} catch (PDOException $err) {
+    $_SESSION["compte-erreur-sql"] = $err->getMessage();
+    header("location:pageerreur.php");
+    exit();
+}
+?>
+ <?php else: ?>
+    <a  href="#" class="menu-left-first"  style="color: black; font-size:1.7rem; cursor: default;">Hello</a><hr>
+    
+    <?php endif; ?>       
+        <a  href="index.php" class="menu-left-first">Home</a>
+        <?php if (!isset($_SESSION["email"])): ?>
+        <a href="signup_verification_email.php">Sign up</a>
+        <a href="signin.php">Sign in</a>
+        <?php endif; ?>
+        <a href="#" id="shoppingLink">Shopping</a>
+        <a href="contact.php">Contact</a>
+        <a href="about_online_shopping.php">About Online Shopping</a>
+    </div>
+    <div class="menu" id="submenuContent" style="display: none; background-color:rgb(36, 36, 73);">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"> &times;</a>
+    <a href="#" id="backToMainMenu" style="font-size: 1.4rem;" class="menu-left-first"><&nbsp Back</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Fashion</a>
+    <a href="clothes.php">Clothes</a>
+    <a href="hats.php">Hats</a>
+    <a href="shoes.php">Shoes</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Computers</a>
+    <a href="computers.php"> Desktop Computers</a>
+    <a href="laptops.php"> Laptops</a><hr style="margin-bottom: 10px;">
+    <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Phones</a>
+    <a href="phones.php">IPhone</a>
+    <a href="android.php">Android</a>
+    
+    
+    </div>
 </header>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -207,6 +263,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script src="./asset/js/reload.js" async></script>
 <script src="./asset/js/logout.js"></script>
+<script src="./asset/js/menuleft.js"></script>
 <script>
    
     document.addEventListener("DOMContentLoaded", function() {

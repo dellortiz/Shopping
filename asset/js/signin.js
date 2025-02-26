@@ -78,7 +78,7 @@ $(document).ready(function() {
     success: function(response) {
     var data = JSON.parse(response);
     if (data.status === 'success') {
-    window.location.href = 'shopping.php'; // Redirigir automáticamente
+    window.location.href = 'index.php'; // Redirigir automáticamente
     } else {
     if (data.message === 'Invalid code') {
     $('#code1-error').text(data.message).css('color', 'red');
