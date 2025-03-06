@@ -1,52 +1,54 @@
 <?php include_once('./common/header.php'); ?>
 <main class="main-body-index">
-                <section class="select-menu">
-                    <ul id="menu">
-                        <li class="section-menu-li ">Fashion
-                            <ul class="submenu">
-                                <li class="section-menu-li"><a href="clothes.php">Clothes</a></li>
-                                <li class="section-menu-li"><a href="shoes.php">Shoes</a></li>
-                                <li class="section-menu-li"><a href="hats.php">Hats</a></li>
-                            </ul>
-                        </li>
-                        <li class="section-menu-li">Computers
-                            <ul class="submenu">
-                                <li class="section-menu-li">
-                                    <summary><a href="computers.php">Desktop computer</a>
-                                </li>
-                                <li class="section-menu-li"><a href="laptops.php"> Laptops</a></li>
-                            </ul>
-                        </li>
-                        <li class="section-menu-li ">Phones
-                            <ul class="submenu">
-                                <li class="section-menu-li "><a href="iphones.php">Iphones</a></li>
-                                <li class="section-menu-li"><a href="android.php"> Android</a></li>
-                            </ul>
-                        </li>
-                        <li class="section-menu-li">About Shopping
-                            <ul class="submenu">
-                                <li class="section-menu-li"><a href="about_online_shopping.php#shopping-work"> How does online shopping work?</a></li>
-                                <li class="section-menu-li"><a href="about_online_shopping.php#online-shopping"> What are the advantages or disadvantages of online shopping?</a></li>
-                                <li class="section-menu-li"><a href="about_online_shopping.php#online-entail"> What does selling online entail?</a></li>
-                                <li class="section-menu-li "><a href="about_online_shopping.php#virtual-store">What are the elements of a virtual store?</a></li>
-                            </ul>
-                        </li>
-                        <li class="section-menu-li up">Contact
-                            <ul class="submenu">
-                                <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
-                            </ul>
-                        </li>
-                        <li class="section-menu-li">Home
-                            <ul class="submenu">
-                                <li class="section-menu-li"><a href="index.php">Home page</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
+<section class="select-menu">
+    <ul id="menu">
+        <li class="section-menu-li ">Fashion
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="clothes.php">Clothes</a></li>
+        <li class="section-menu-li"><a href="shoes.php">Shoes</a></li>
+        <li class="section-menu-li"><a href="hats.php">Hats</a></li>
+        </ul></li>
+        <li class="section-menu-li">Computers 
+        <ul class="submenu">
+        <li class="section-menu-li"><summary><a href="computers.php">Desktop computer</a></li>
+        <li class="section-menu-li"><a href="laptops.php"> Laptops</a></li>
+        </ul></li>
+        <li class="section-menu-li ">Phones
+        <ul class="submenu">
+        <li class="section-menu-li "><a href="iphones.php">Iphones</a></li>
+        <li class="section-menu-li"><a href="android.php"> Android</a></li>
+        </ul></li>
+        <li class="section-menu-li">About Shopping
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="about_online_shopping.php#shopping-work"> How does online shopping work?</a></li>
+        <li class="section-menu-li"><a href="about_online_shopping.php#online-shopping"> What are the advantages or disadvantages of online shopping?</a></li>
+        <li class="section-menu-li"><a href="about_online_shopping.php#online-entail"> What does selling online entail?</a></li>
+        <li class="section-menu-li "><a href="about_online_shopping.php#virtual-store">What are the elements of a virtual store?</a></li>
+        </ul></li>
+        <li class="section-menu-li up">Contact
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
+        </ul></li>
+        <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
+        <?php if (isset($_SESSION['email'])): ?>
+        <li class="section-menu-li">Profile
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="profile.php"> My profile</a></li>
+        </ul></li>
+        <?php endif; ?>
+        <li class="section-menu-li">Home
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="index.php">Home page</a></li>
+        </ul></li>
+        </ul>
+</section>
                 <div class="div-main">
                     <h2 class="h2pages ">Registration form</h2>
                 </div>
-                <form class="contact-form-container" action="user_data_back.php" method="post">
+                <form id="registration-form" class="contact-form-container" action="user_data_back.php" method="post">
                     <p class="p-form">We need your data to deliver your purchase .</p>
                     <div class="message-container">
                     <?php if (isset($_SESSION['message'])): ?>
@@ -147,4 +149,35 @@
                             <button class="botton-form" type="submit">Submit </button>
                     </form>
 </main>
+<script>
+
+var orderId = <?php echo json_encode($_SESSION['order_id']); ?>; // Asegúrate de definir `order_id` en la sesión
+var formSubmitted = false; // Variable global para verificar si el formulario ha sido enviado
+
+function sendDeleteRequest() {
+    if (!formSubmitted) { // Solo enviar la solicitud de eliminación si el formulario no ha sido enviado
+        $.ajax({
+            type: 'POST',
+            url: 'delete_order.php',
+            data: { order_id: orderId },
+            async: false,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + error);
+            }
+        });
+    }
+}
+
+// Marcar el formulario como enviado cuando el usuario hace clic en submit
+document.getElementById('registration-form').addEventListener('submit', function (e) {
+    formSubmitted = true;
+});
+
+window.addEventListener('beforeunload', function (e) {
+    sendDeleteRequest();
+});
+</script>
 <script src="./asset/js/message_id.js"></script>

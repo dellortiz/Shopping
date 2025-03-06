@@ -2,6 +2,22 @@
 <?php include_once('./common/connexiondb.php');
 session_start();
 
+// Suponiendo que ya tienes $pdo y $id_user definidos
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['id_user'])) {
+    $id_user = $_SESSION['id_user'];
+} else {
+    // Usuario no autenticado
+    // Generar un id_user temporal si aún no existe
+    if (!isset($_SESSION['id_user_temp'])) {
+        $_SESSION['id_user_temp'] = -time(); // Usando un número negativo basado en el timestamp
+    }
+    $id_user = $_SESSION['id_user_temp'];
+}
+
+// Llamar a la función después de definir $id_user y $pdo
+check_and_revert_stale_stock($pdo, $id_user);
 ?>
 <html lang="en">
 
@@ -67,18 +83,28 @@ session_start();
                                 </ul>
                             </div>
                         </a>
-                        <div><a href="clothes.php">Store</a></div>
-                        <div>
-                            <a href="about_online_shopping.php">
-                                <div class="div-header2-2">
-                                    <img class="img-div-header" src="./asset/information.png" alt="">
-                                    <ul>
-                                        <h5>Information</h5>
-                                        <li>About shooping </li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
+                       
+                        <?php if (isset($_SESSION["email"])) : ?>
+                        <a href="shopping.php">
+                            <div class="div-header2-2">
+                                <img class="img-div-header" src="./asset/shopping-cart(1).png" alt="">
+                                <ul>
+                                    <h5>Your Purchase</h5>
+                                    <li>Currently buying </li>
+                                </ul>
+                            </div>
+                        </a>
+                        <?php endif; ?>
+
+                        <a href="about_online_shopping.php">
+                            <div class="div-header2-2">
+                                <img class="img-div-header" src="./asset/information.png" alt="">
+                                <ul>
+                                    <h5>Information</h5>
+                                    <li>About shooping </li>
+                                </ul>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
@@ -312,6 +338,10 @@ session_start();
         <a href="signin.php">Sign in</a>
         <?php endif; ?>
         <a href="#" id="shoppingLink">Shopping</a>
+        <?php if (isset($_SESSION["email"])): ?>
+        <a href="profile.php" >Profile</a>
+        <a href="shopping.php" >Basket</a>
+        <?php endif; ?>
         <a href="contact.php">Contact</a>
         <a href="about_online_shopping.php">About Online Shopping</a>
     </div>

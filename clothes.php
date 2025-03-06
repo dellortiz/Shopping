@@ -49,13 +49,14 @@
 <div class="div-main">
 <h2 class="h2pages ">Clothes</h2>
 <div class="basket-icone">
-<a><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
+<a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
 <span id="item-count" class="item-count">0</span> 
 </div>
 </div>
 <section class="newdisign">
 <div class="bloque-articulos">
 <?php include_once("./common/connexiondb.php"); 
+
 try {
 $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
 // Opciones de PDO
@@ -124,6 +125,7 @@ echo "Error: " . $e->getMessage();
 <script src="./asset/js/script.js"></script>
 <script src="./asset/js/message_id.js"></script>
 <script src="./asset/js/search.js"></script>
+<script src="./asset/js/revert_stock.js"></script>
 <footer>
 
 </footer>

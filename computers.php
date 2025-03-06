@@ -36,6 +36,10 @@
                     <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
                 </ul>
             </li>
+            <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
             <?php if (isset($_SESSION['email'])): ?>
         <li class="section-menu-li">Profile
         <ul class="submenu">
@@ -52,13 +56,26 @@
     <div class="div-main">
         <h2 class="h2pages ">Computers</h2>
         <div class="basket-icone">
-            <a><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
+            <a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
             <span id="item-count" class="item-count">0</span>
         </div>
     </div>
     <section class="newdisign">
         <div class="bloque-articulos">
             <?php include_once("./common/connexiondb.php");
+            if (isset($_SESSION['id_user'])) {
+                $id_user = $_SESSION['id_user'];
+            } else {
+                // Usuario no autenticado
+                // Generar un id_user temporal si aún no existe
+                if (!isset($_SESSION['id_user_temp'])) {
+                    $_SESSION['id_user_temp'] = -time(); // Usando un número negativo basado en el timestamp
+                }
+                $id_user = $_SESSION['id_user_temp'];
+            }
+            
+            // Llamar a la función después de definir $id_user y $pdo
+            check_and_revert_stale_stock($pdo, $id_user);
             try {
                 $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
                 // Opciones de PDO
@@ -98,7 +115,7 @@
                                     <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
                                     <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
 
-                                    <input class="botton" type="submit" value="Buy Now">
+                                    </form>
                             </article>
                         </div>
                     </div>

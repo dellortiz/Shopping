@@ -82,7 +82,7 @@ if (count($errors) > 0) {
         
         unset($pdo);
         $_SESSION['message'] = "The registration of your data has been successful";
-        header("location:profile.php");
+        header("location:pay_order.php");
     
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();

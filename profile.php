@@ -29,6 +29,10 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
         </ul></li>
+        <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
         <li class="section-menu-li up">Profile
         <ul class="submenu">
         <li class="section-menu-li"><a href="profile.php"> My profile</a></li>

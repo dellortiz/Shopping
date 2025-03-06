@@ -30,6 +30,10 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
         </ul></li>
+        <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
         <?php if (isset($_SESSION['email'])): ?>
         <li class="section-menu-li">Profile
         <ul class="submenu">
@@ -74,7 +78,9 @@
 
         <div class="form-group">
         <label>Email: * </label>
-        <input  type="email" name="email" required placeholder="youremail@example.com"/>
+        <?php if (isset($_SESSION["email"])): ?>
+                                <input type="email" name="email" value="<?php echo $_SESSION["email"]; ?>" readonly required placeholder="youremail@example.com"/>
+                            <?php endif ?>
         </div>
 
         <div class="form-group">

@@ -2,6 +2,25 @@
 session_start();
 include("./common/connexiondb.php");
 
+
+// Suponiendo que ya tienes $pdo y $id_user definidos
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['id_user'])) {
+    $id_user = $_SESSION['id_user'];
+} else {
+    // Usuario no autenticado
+    // Generar un id_user temporal si aún no existe
+    if (!isset($_SESSION['id_user_temp'])) {
+        $_SESSION['id_user_temp'] = -time(); // Usando un número negativo basado en el timestamp
+    }
+    $id_user = $_SESSION['id_user_temp'];
+}
+
+// Llamar a la función después de definir $id_user y $pdo
+check_and_revert_stale_stock($pdo, $id_user);
+
+
 function getPageTitle($page) {
 $titles = [
 'index.php' => 'Home',
@@ -46,7 +65,7 @@ $pageTitle = getPageTitle($currentPage);
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
-    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php') : ?>
+    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php')  : ?>
     <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
         <input type="hidden" name="source" value="header">
         <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -59,7 +78,7 @@ $pageTitle = getPageTitle($currentPage);
 
 
     <ul class="section-ul-header2">
-        <?php if(!isset($_SESSION["email"]) && $currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php') : ?>
+        <?php if(!isset($_SESSION["email"]) && $currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php')  : ?>
             <a class="a-header" href="#" id="signInBtn"><li class="li-header2">Sign in</li></a>
         <?php elseif(isset($_SESSION["email"])) : ?> 
             <div class="dropdown">
@@ -101,7 +120,7 @@ $pageTitle = getPageTitle($currentPage);
                             
                         
     
-                        echo '<li><a class="dropdown-item" href="index.php"><span class="user-initial" style="background-color: ' . htmlspecialchars($userColor) . ';">' . htmlspecialchars($username[0]) . '</span> ' . htmlspecialchars($username) . '<button class="button-profile">Profile</button></a></li>';
+                        echo '<li><a class="dropdown-item" href="profile.php"><span class="user-initial" style="background-color: ' . htmlspecialchars($userColor) . ';">' . htmlspecialchars($username[0]) . '</span> ' . htmlspecialchars($username) . '<button class="button-profile">Profile</button></a></li>';
                         echo '<hr>';
                             echo'<hr>';
                             echo '<li><a class="dropdown-item" href="#">Another action</a></li>';
@@ -204,6 +223,10 @@ $pageTitle = getPageTitle($currentPage);
         <a href="signin.php">Sign in</a>
         <?php endif; ?>
         <a href="#" id="shoppingLink">Shopping</a>
+        <?php if (isset($_SESSION["email"])): ?>
+        <a href="profile.php" >Profile</a>
+        <a href="shopping.php" >Basket</a>
+        <?php endif; ?>
         <a href="contact.php">Contact</a>
         <a href="about_online_shopping.php">About Online Shopping</a>
     </div>

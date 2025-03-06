@@ -29,6 +29,10 @@
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
         </ul></li>
+        <li class="section-menu-li">Basket
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="shopping.php"> My purchase</a></li>
+        </ul></li>
         <?php if (isset($_SESSION['email'])): ?>
         <li class="section-menu-li">Profile
         <ul class="submenu">
@@ -44,7 +48,7 @@
 <div class="div-main">
 <h2 class="h2pages ">Hats</h2>
 <div class="basket-icone">
-<a><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
+<a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
 <span id="item-count" class="item-count">0</span> 
 </div>
 </div>
@@ -95,7 +99,7 @@ echo '</pre>';
     <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
     <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
 
-<input class="botton" type="submit" value="Buy Now">
+    </form>
 </article>
 </div>
 </div>
