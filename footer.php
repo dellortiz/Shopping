@@ -1,5 +1,0 @@
-<footer>
-    <section>
-        
-    </section>
-</footer>

@@ -79,8 +79,10 @@
         <div class="form-group">
         <label>Email: * </label>
         <?php if (isset($_SESSION["email"])): ?>
-                                <input type="email" name="email" value="<?php echo $_SESSION["email"]; ?>" readonly required placeholder="youremail@example.com"/>
-                            <?php endif ?>
+        <input type="email" name="email" value="<?php echo $_SESSION["email"]; ?>" readonly required placeholder="youremail@example.com"/>
+        <?php else: ?>
+        <input type="email" name="email"  required placeholder="youremail@example.com"/>
+        <?php endif ?>
         </div>
 
         <div class="form-group">
@@ -95,3 +97,4 @@
 </main>
 <script src="./asset/js/message_id.js"></script>
 <script src="./asset/js/script.js"></script>
+<script src="./asset/js/signin.js"></script>

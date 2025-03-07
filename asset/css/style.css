@@ -1667,3 +1667,8 @@ height: fit-content;
 background-color: #ffffff;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

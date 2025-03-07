@@ -44,8 +44,10 @@ $pageTitle = getPageTitle($currentPage);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="stylesheet" href="./asset/css/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ASg8TaiH3y7qI9T3vYXUIVb7E37Oiw_EZw0kI-nPDslL22ScOsvj_yYCTCzrLlFFC2J8fLbYL9y0zfwK&currency=EUR"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +67,7 @@ $pageTitle = getPageTitle($currentPage);
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
-    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php')  : ?>
+    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php'&& $currentPage !== 'pay_order.php'&& $currentPage !== 'success_page.php')  : ?>
     <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
         <input type="hidden" name="source" value="header">
         <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -241,7 +243,7 @@ $pageTitle = getPageTitle($currentPage);
     <a href="computers.php"> Desktop Computers</a>
     <a href="laptops.php"> Laptops</a><hr style="margin-bottom: 10px;">
     <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Phones</a>
-    <a href="phones.php">IPhone</a>
+    <a href="iphones.php">IPhone</a>
     <a href="android.php">Android</a>
     
     
@@ -300,5 +302,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     </script>  
 </script>
-</body>
-</html>

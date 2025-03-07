@@ -356,7 +356,7 @@ check_and_revert_stale_stock($pdo, $id_user);
     <a href="computers.php"> Desktop Computers</a>
     <a href="laptops.php"> Laptops</a><hr style="margin-bottom: 10px;">
     <a href="#" style="font-size: 1.3rem; cursor:default; background-color:rgb(220, 220, 238); color:black;">Phones</a>
-    <a href="phones.php">IPhone</a>
+    <a href="iphones.php">IPhone</a>
     <a href="android.php">Android</a>
     </div>
     <!-- <?php
@@ -432,5 +432,7 @@ if (isset($_SESSION['email'])) {
 
     </script>
 </body>
-
+<footer>
+    <?php include_once('./common/footer.php')?>
+</footer>
 </html>
