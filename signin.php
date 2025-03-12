@@ -36,7 +36,7 @@
 
 <input class="botton-form" type="submit" value="Submit">
 </div>
-<p class="h3start"><a href="signup_verification_email.php">Do you need to Sign up ?</a></p>
+<p class="h3start">You don't have an account yet ? <a class="underline" href="signup_verification_email.php">Do you need to Sign up ?</a></p>
 <span style="font-size: 16px; color:red;"></span>
 </form>
 

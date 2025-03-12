@@ -79,7 +79,7 @@ check_and_revert_stale_stock($pdo, $id_user);
                                 <img class="img-div-header" src="./asset/shopping-bags.png" alt="">
                                 <ul>
                                     <h5>Your Store</h5>
-                                    <li>Start to buy </li>
+                                    <li>Start to buy now</li>
                                 </ul>
                             </div>
                         </a>
@@ -428,10 +428,9 @@ if (isset($_SESSION['email'])) {
     <script src="./asset/js/logout.js"></script>
     <script src="./asset/js/search.js"></script>
     <script src="./asset/js/menuleft.js"></script>
-    <script>
-
-    </script>
+    <script src="./asset/js/responsive_system.js"></script>
 </body>
+
 <footer>
     <?php include_once('./common/footer.php')?>
 </footer>

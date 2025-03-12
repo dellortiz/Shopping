@@ -744,7 +744,7 @@ font-weight: bolder;
     text-align: center;
     padding: 0px 18px;
     z-index: 100;
-
+   
    }
    .submenu{
     opacity: 0;
@@ -1559,6 +1559,8 @@ text-align: center;
     height: 100%; /* Ocupar toda la altura de la pantalla */
     z-index: 1100;
     transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+    
+    
 }
 
 .menu.show {
@@ -1573,6 +1575,7 @@ text-align: center;
     font-weight: 600;
     font-size: 1.2em;
     transition: background-color 0.3s ease;
+    
 }
 .menu-left-first{
     margin-top: 20px;
@@ -1608,12 +1611,11 @@ text-align: center;
     cursor: pointer;
     border-radius: 10px ;
     z-index: 1000;
+    display: none;
 }
 .openbtn:hover{
     transition: 0.2s;
-    background-color: rgb(232, 236, 240) ;
-    
-   
+    background-color: rgb(232, 236, 240) ;  
 }
 
 .header-main {
@@ -1671,4 +1673,92 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     margin-top: 50px;
+}
+/*----------------------------------------------Responsive------------------------------------------*/
+@media screen and (min-width: 319px) and (max-width:599px) {
+    .body-index{
+        margin-left:0px;
+        margin-right: 0px;
+    } 
+    .header-main {
+        transform: translate(-30% );
+        /* margin-left: 50px;  */
+    }
+    .ul-header1{
+         margin-top: 2%;
+         margin-left: 6%; 
+     }
+     .logo-header{
+         width: 40px;
+         height: 32px;
+     }
+     .li-header1{
+     font-size: 22px;
+     letter-spacing: 0px;
+     }
+     .ul-header2{
+         margin-top: 3%;
+         margin-right: 2%;
+     }
+     .li-header2 {
+     font-size: 15px;
+     padding: 10px 12px;
+     }
+     .div-header2 {
+        font-size: 1.4rem;   
+    }
+    .div-header2 h2{
+       margin-bottom: 0.1rem;  
+    }
+    .search-container{
+        margin-top: 1rem;
+        margin-bottom:17rem ;
+    }
+    .div-header2-1 {
+    flex-direction: column;
+    width: 90%;
+    }
+    .div-header2-1 a {
+    margin: 2%;
+    }
+    .div-header2-2 ul{
+        display: flex;
+       flex-direction: column;
+       font-size: 1.2rem;
+        }
+        .div-main2{
+            margin: 8px;
+        }
+        .p-main1{
+            font-size: 1.5rem;
+        }
+        .logo-main1{
+            width: 55px;
+            height: 50px;
+        }
+        .li-main1{
+            font-size: 0.8rem;
+        }
+        .li-main2{
+            display: flex;
+            flex-direction: column;
+            margin:3%;
+        }
+        .ul-main2{
+           display: flex;
+          align-items: center;
+        flex-direction: column;
+        margin-left: 0px;
+        margin-right: 0px;
+        }
+       .gallery{
+        grid-template-columns: repeat(1, 16rem);;
+       }
+       .details-section{
+        margin-left: 0px;
+       }
+       .summary-section{
+        font-size: 1.3rem;
+       }
+    
 }

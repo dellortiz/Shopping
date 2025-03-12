@@ -90,7 +90,7 @@
     // Configuración de los botones de PayPal
     paypal.Buttons({
       style: {
-        color: 'blue',
+        color: 'gold',
         shape: 'pill',
         label: 'pay'
       },

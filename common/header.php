@@ -24,12 +24,22 @@ check_and_revert_stale_stock($pdo, $id_user);
 function getPageTitle($page) {
 $titles = [
 'index.php' => 'Home',
-'signup.php' => 'Sign up',
+'signup_verification_email.php' => 'Sign up',
+'signup_verification_code.php' => 'Sign up',
 'signin.php' => 'Sign in',
 'clothes.php' => 'Clothes',
 'shoes.php' => 'Shoes',
 'hats.php' => 'Hats',
 'shopping.php' => 'Shopping',
+'computers.php' => 'Desktop computer',
+'laptops.php' => 'Laptops',
+'iphones.php' => 'Iphones',
+'android.php' => 'Android',
+'about_online_shopping.php' => 'About Online Shopping',
+'contact.php' => 'Contact us',
+'profile.php' => 'My Profile',
+'pay_order.php' => 'My Order',
+'success_page.php' => 'Your transfer',
 // Add pages and titles...
 ];
 
@@ -61,9 +71,10 @@ $pageTitle = getPageTitle($currentPage);
 <header>
 <section class="section-header">
     <ul class="section-ul-header1">
-        <li class="section-li-header1"> <div id="main" class="header-main-up">
-        <button class="openbtn" id="leftmenuboton" onclick="openMenu()">☰ </button>
-    </div></li>
+        <li class="section-li-header1"> 
+            <div id="main" class="header-main-up">
+               <button class="openbtn" id="leftmenuboton" onclick="openMenu()">☰ </button>
+            </div></li>
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
@@ -232,7 +243,7 @@ $pageTitle = getPageTitle($currentPage);
         <a href="contact.php">Contact</a>
         <a href="about_online_shopping.php">About Online Shopping</a>
     </div>
-    <div class="menu" id="submenuContent" style="display: none; background-color:rgb(36, 36, 73);">
+    <div class="menu submenu-mobile" id="submenuContent"  style="display: none; background-color:rgb(36, 36, 73);">
     <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()"> &times;</a>
     <a href="#" id="backToMainMenu" style="font-size: 1.4rem;" class="menu-left-first"><&nbsp Back</a><hr style="margin-bottom: 10px;">
     <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Fashion</a>
@@ -245,10 +256,11 @@ $pageTitle = getPageTitle($currentPage);
     <a href="#" style="font-size: 1.3rem; cursor:default; background-color:white; color:black;">Phones</a>
     <a href="iphones.php">IPhone</a>
     <a href="android.php">Android</a>
-    
-    
     </div>
+
+
 </header>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var userIcon = document.getElementById("userIcon");
@@ -289,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="./asset/js/reload.js" async></script>
 <script src="./asset/js/logout.js"></script>
 <script src="./asset/js/menuleft.js"></script>
+<script src="./asset/js/responsive_system.js"></script>
 <script>
    
     document.addEventListener("DOMContentLoaded", function() {

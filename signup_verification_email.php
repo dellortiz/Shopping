@@ -50,9 +50,7 @@
                             </li>
                     </div>
                     </ol>
-                    <label class="label1" for="conditions" id="conditions-label">Privacy Policy : <input type="checkbox" name="conditions" id="conditions" title="The information collected during your registration is 
-                        processed in accordance with our Privacy Policy. We are committed to protecting your 
-                        personal data and only using it in the context of your use of the Site. Checking here you agree to share your data with us" required> 
+                    <label class="label1" for="conditions" id="conditions-label">Privacy Policy : <input type="checkbox" name="conditions" id="conditions" title="The information collected during your registration is processed in accordance with our Privacy Policy. We are committed to protecting your personal data and only using it in the context of your use of the Site. Checking here you agree to share your data with us" required> 
                     </label>
 
 

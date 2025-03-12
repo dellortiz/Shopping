@@ -125,7 +125,6 @@ echo "Error: " . $e->getMessage();
 <script src="./asset/js/script.js"></script>
 <script src="./asset/js/message_id.js"></script>
 <script src="./asset/js/search.js"></script>
-<script src="./asset/js/revert_stock.js"></script>
 <footer>
 
 </footer>
