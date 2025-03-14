@@ -1,6 +1,6 @@
 <?php include_once('./common/header.php')?>
     <main class="main-body-index">
-<section class="select-menu">
+<section class="select-menu" id="menu-desktop">
     <ul id="menu">
         <li class="section-menu-li ">Fashion
         <ul class="submenu">
@@ -47,6 +47,16 @@
 </section>
 <div class="div-main">
 <h2 class="h2pages ">Phones</h2>
+<?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php'&& $currentPage !== 'pay_order.php'&& $currentPage !== 'success_page.php')  : ?>
+    <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
+        <input type="hidden" name="source" value="header">
+        <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+        <input type="text" name="query" placeholder="Search..." class="search-bar" id="header-search-bar">
+        <button type="submit" class="search-button">
+            <img src="./asset/search.png" alt="Search" class="img-search">
+        </button>
+    </form>
+    <?php endif; ?>
 <div class="basket-icone">
 <a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
 <span id="item-count" class="item-count">0</span> 
@@ -118,10 +128,11 @@ echo "Error: " . $e->getMessage();
     </div>
 </section>
 
-     <script src="./asset/js/pannier.js"></script>
-   <script src="./asset/js/signin.js"></script>
+    <script src="./asset/js/pannier.js"></script>
+    <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/search.js"></script>
+    <script src="./asset/js/responsive_system.js"></script>
     <footer>
 
     </footer>

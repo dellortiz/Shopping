@@ -1,6 +1,6 @@
 <?php include_once('./common/header.php')?>
 <main class="main-body-index">
-<section class="select-menu">
+<section class="select-menu" id="menu-desktop">
     <ul id="menu">
         <li class="section-menu-li up">Fashion
         <ul class="submenu">
@@ -48,6 +48,16 @@
 
 <div class="div-main">
 <h2 class="h2pages ">Clothes</h2>
+<?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php'&& $currentPage !== 'pay_order.php'&& $currentPage !== 'success_page.php')  : ?>
+    <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
+        <input type="hidden" name="source" value="header">
+        <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+        <input type="text" name="query" placeholder="Search..." class="search-bar" id="header-search-bar">
+        <button type="submit" class="search-button">
+            <img src="./asset/search.png" alt="Search" class="img-search">
+        </button>
+    </form>
+    <?php endif; ?>
 <div class="basket-icone">
 <a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
 <span id="item-count" class="item-count">0</span> 
@@ -125,6 +135,104 @@ echo "Error: " . $e->getMessage();
 <script src="./asset/js/script.js"></script>
 <script src="./asset/js/message_id.js"></script>
 <script src="./asset/js/search.js"></script>
+<script src="./asset/js/responsive_system.js"></script>
+
+
+<!-- <script>
+var divMain = document.querySelector('.div-main'); // Selecciona el div-main
+var menuDesktop = document.querySelector('.select-menu'); // Selecciona el menú
+
+window.addEventListener('scroll', function () {
+    var scrollTop = window.pageYOffset;
+    if (scrollTop >= 50) {
+        menuDesktop.style.top = '0';
+        divMain.style.top = '10%'; // Ajusta el top de div-main para que siga al menú
+    } else {
+        menuDesktop.style.top = '6%';
+        divMain.style.top = '16%';
+    }
+});
+</script> -->
+
+<!-- <script>
+    // Seleccionamos los elementos
+    var header = document.querySelector('.section-header');
+    var menuDesktop = document.querySelector('.select-menu');
+    var divMain = document.querySelector('.div-main');
+    
+  
+    
+    // Variable para almacenar el scroll previo
+    var prevScroll = window.pageYOffset;
+    
+    window.addEventListener('scroll', function() {
+      var currentScroll = window.pageYOffset;
+      
+      // Si el scroll es inferior a 50px o se está haciendo scroll hacia arriba
+      if (currentScroll < 50 || currentScroll < prevScroll) {
+        header.style.top = '0px';
+        menuDesktop.style.top = '6%';
+        divMain.style.top = '16%';
+      } else {
+        // Si se hace scroll hacia abajo,
+        header.style.top = '-130px'; // Ocultamos header (ajusta este valor si es necesario)
+        menuDesktop.style.top = '0';
+        divMain.style.top = '10%';
+      }
+      
+      prevScroll = currentScroll;
+    });
+  </script> -->
+<!-- <script>
+  // Seleccionamos los elementos
+  var header = document.querySelector('.section-header');
+  var menuDesktop = document.querySelector('.select-menu');
+  var divMain = document.querySelector('.div-main');
+
+  window.addEventListener('scroll', function() {
+    var currentScroll = window.pageYOffset;
+
+    // Si estamos en el top
+    if (currentScroll === 0) {
+      header.style.top = '0px';
+      menuDesktop.style.top = '6%';
+      divMain.style.top = '16%';
+    } else {
+      // En cualquier otra posición, ocultamos el header
+      header.style.top = '-130px'; // Ajusta este valor según la altura del header
+      menuDesktop.style.top = '0';
+      divMain.style.top = '10%';
+    }
+  });
+</script> -->
+<script>
+   // Seleccionamos los elementos
+   var header = document.querySelector('.section-header');
+  var menuDesktop = document.querySelector('.select-menu');
+  var divMain = document.querySelector('.div-main');
+
+  window.addEventListener('scroll', function() {
+    var currentScroll = window.pageYOffset;
+
+    // Solo aplicamos esta lógica en dispositivos con ancho entre 319px y 599px
+    if (window.innerWidth >= 319 && window.innerWidth <= 599) {
+      if (currentScroll === 0) {
+        // Cuando el scroll está en el top, se muestran en su posición inicial.
+        header.style.top = '0px';
+        menuDesktop.style.top = '6%';
+        divMain.style.top = '16%';
+      } else {
+        // Mientras se hace scroll, ocultamos el header
+        // y posicionamos al div-main en 30px desde el tope.
+        header.style.top = '-130px';
+        menuDesktop.style.top = '0px';
+        divMain.style.top = '30px';
+      }
+    }
+  });
+</script>
+
+
 <footer>
 
 </footer>

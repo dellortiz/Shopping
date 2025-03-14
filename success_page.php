@@ -171,4 +171,5 @@ try {
     </div>
   </div>
 </body>
+<script src="./asset/js/responsive_system.js"></script>
 </html>

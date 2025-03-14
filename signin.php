@@ -46,6 +46,7 @@
 
 <script src="./asset/js/signin.js" async></script>
 <script src="./asset/js/reload.js" async></script>
+<script src="./asset/js/responsive_system.js"></script>
 <script>
 var passdeux = document.getElementById("password1");
 var icondeux = document.getElementById("eye_passwordtrois");

@@ -78,16 +78,7 @@ $pageTitle = getPageTitle($currentPage);
         <li class="section-li-header1"><a class="a-header" href="./index.php">Shopping</a></li>
         <li class="section-li-header1"><a class="a-header" href="index.php"><img class="img-header" src="./asset/logo1.png" alt="logo"></a></li>
     </ul>
-    <?php if($currentPage !== 'signin.php' && $currentPage !== 'signup_verification_email.php' && $currentPage !== 'signup_verification_code.php' && $currentPage !== 'user_data.php'&& $currentPage !== 'pay_order.php'&& $currentPage !== 'success_page.php')  : ?>
-    <form class="search-form" action="/local_server/comercio0.1/search.php" method="GET">
-        <input type="hidden" name="source" value="header">
-        <input type="hidden" name="current_page" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
-        <input type="text" name="query" placeholder="Search..." class="search-bar" id="header-search-bar">
-        <button type="submit" class="search-button">
-            <img src="./asset/search.png" alt="Search" class="img-search">
-        </button>
-    </form>
-    <?php endif; ?>
+   
 
 
     <ul class="section-ul-header2">
@@ -314,4 +305,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     </script>  
+<!-- <script>
+var ubicacionPrincipal = document.documentElement.scrollTop;
+var header = document.querySelector('.section-header');
+
+header.style.top = '0px'; // Estado inicial
+
+window.addEventListener('scroll', function () {
+    var ubicacionActual = window.pageYOffset;
+    if (ubicacionPrincipal >= ubicacionActual || ubicacionActual < 50) {
+        header.style.top = '0px';
+    } else {
+        header.style.top = '-130px'; // Ajusta este valor según la altura del header
+    }
+    ubicacionPrincipal = ubicacionActual; // Actualiza la posición principal
+});
+</script> -->
+
+
+
 </script>

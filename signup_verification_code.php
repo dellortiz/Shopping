@@ -50,6 +50,7 @@
 </div>
 </section>
 </main>
+<script src="./asset/js/responsive_system.js"></script>
 <script src="./asset/js/countdown.js"></script>
 </body>
 </html>

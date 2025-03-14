@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
 ob_end_flush(); // Envía el contenido del buffer al navegador y termina el buffering
 ?>
 <main class="main-body-index">
-<section class="select-menu">
+<section class="select-menu" id="menu-desktop">
 <ul id="menu">
         <li class="section-menu-li">Fashion
                 <ul class="submenu">
@@ -91,9 +91,10 @@ $showform = $result['total'] > 0;
     </div>
 <?php endif; ?>
 </div>
-
+<script async src="./asset/js/responsive_system.js"></script>
 <script async src="./asset/js/pannier.js"></script>
 </form>
+
 <footer>
 
 </footer>

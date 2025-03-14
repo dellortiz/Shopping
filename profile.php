@@ -1,6 +1,6 @@
 <?php include_once("./common/header.php"); ?>
 <main class="main-body-index">
-<section class="select-menu">
+<section class="select-menu" id="menu-desktop">
     <ul id="menu">
         <li class="section-menu-li ">Fashion
         <ul class="submenu">
@@ -70,3 +70,4 @@
     </div>
   </div>
     <script src="./asset/js/message_id.js"></script>
+    <script src="./asset/js/responsive_system.js"></script>

@@ -26,6 +26,7 @@ html {
     left: 0;
     right: 0;
     z-index: 103;
+    transition: top 0.6s; /* Transición suave */
     }
     
     .section-ul-header1 {
@@ -50,11 +51,12 @@ html {
     }
     .main-body-index {
     margin: 0 12%;
-    min-height: 100vh;
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
     background-color: rgb(246, 248, 249);
     margin-top: 60px; /* Ajusta este valor según la altura del select-menu */
     padding: 21px;
+    height: 200vh;
+    
     }
     .main-body-index-sign{
         margin-top: 60px; /* Ajusta este valor según la altura del select-menu */  
@@ -64,9 +66,10 @@ html {
     .div-main{
         display: flex;
         justify-content: center;
+        flex-direction: column;
         text-align: center;
         align-items: center;
-        padding: 19px;
+        padding: 10px;
         background-color: rgb(44, 44, 74);
         background-size: cover;
         position: fixed;
@@ -74,9 +77,11 @@ html {
         max-width: 72%;
         height: auto;
         left: 50%;
-        top: 16%;
+        top: 16.5%;
         transform: translate(-50%, -50%);
         z-index: 100;
+        transition: top 0.6s; /* Transición suave */
+       
        }
        .basket-icone{
        position: absolute;
@@ -730,13 +735,14 @@ font-weight: bolder;
 .select-menu{
         display: block;
         position: fixed;
-        background-color: rgb(190, 234, 235);
+        /* background-color: rgb(190, 234, 235); */
         border-bottom: 1px solid rgb(208, 206, 206);
         z-index: 100;
         font-weight: 600;
-        top: 6.9%;
+        top: 7%;
         height: 4%;
         cursor: pointer;
+        transition: top 0.6s; /* Transición suave */
    }
    #menu{
     position: relative;
@@ -852,27 +858,47 @@ p{
 article {
     margin: 15px;
     text-align: center;
-    border: 0.2px groove rgb(241, 235, 235);
+    border: 0.1px groove rgb(232, 231, 231);
     padding: 20px 25px;
     font-weight: 500;
     border-radius: 12px;
     transition: transform 0.1s, box-shadow 0.1s;
     height: 280px;
+  
 }
 
 article:hover {
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    .price-text {
+         font-family: 'Merriweather', serif;
+         font-weight: 900;
+         background-color: #1f2b59;
+         color: white; 
+     }
+}
+article:hover .imgarticle {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+article:hover .article-text{
+    color: #1f2b59;
+    border: 0.5px solid #dbdbdd;
+   
 }
 
 .article-text {
+    font-family: 'Merriweather', serif;
     text-align: left;
     padding: 5px;
+    font-weight: 400;
 }
 
 .price-text {
+   margin-bottom: 5px;
     font-family: 'Merriweather', serif;
     font-weight: 900;
+  
     
 }
 
@@ -907,11 +933,12 @@ article {
 
 .bloque-articulos {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
       padding: 15px;
       flex: 1;
-     overflow-y: auto;
+     /* overflow-y: auto; */
      max-height: 50rem; 
 }
 
@@ -1390,9 +1417,9 @@ text-align: center;
 
 .img-profile {
     width: 1.9rem;
-    margin-top: 5px;
-    margin-right: 8px;
-    margin-left: 15px;
+    margin-top: 7px;
+    margin-right: 2px;
+    margin-left: 5px;
     cursor: pointer; /* Añadido para indicar que es clicable */
 }
 
@@ -1417,7 +1444,7 @@ text-align: center;
     content: "";
     position: absolute;
     top: -20px; /* Ajusta según sea necesario */
-    left: 55%; /* Centra el pico horizontalmente */
+    left: 51%; /* Centra el pico horizontalmente */
     transform: translateX(280%);
     border-width: 10px;
     border-style: solid;
@@ -1676,7 +1703,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 /*----------------------------------------------Responsive------------------------------------------*/
 @media screen and (min-width: 319px) and (max-width:599px) {
-    .body-index{
+    .body-index, .main-body-index{
         margin-left:0px;
         margin-right: 0px;
     } 
@@ -1687,12 +1714,23 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     .ul-header1{
          margin-top: 2%;
          margin-left: 6%; 
+        
      }
-     .logo-header{
+     .section-ul-header1{
+         font-size: 22px;
+         font-weight:bolder;
+         letter-spacing: 0px;
+         font-family: none;
+         margin-left: 0px;
+     }
+     .header-main-up{
+      margin-right: 2px;
+     }
+     .logo-header, .img-header{
          width: 40px;
          height: 32px;
      }
-     .li-header1{
+     .li-header1, .section-li-header1{
      font-size: 22px;
      letter-spacing: 0px;
      }
@@ -1712,7 +1750,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     .search-container{
         margin-top: 1rem;
-        margin-bottom:17rem ;
+        margin-bottom:16rem ;
     }
     .div-header2-1 {
     flex-direction: column;
@@ -1760,5 +1798,74 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
        .summary-section{
         font-size: 1.3rem;
        }
-    
+       .div-main{
+        background-color: #1b1b32;;
+        padding: 14px;
+        width: 80.5vw;
+        max-width: 100%;
+        left: 50%;
+        margin-top: 28px;
+        border-radius: 9px;
+       }
+       .basket-icone{
+        top: 15px;
+       }
+       .item-count{
+        font-size: 25px;
+       }
+       .h2pages{
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        }
+        .img-basket{
+            width: 2.2rem;
+        }
+        @media (max-width: 598px) {
+            .bloque-pannier {
+                display: none !important;
+            }
+        }
+        .div-sign{
+            font-size: 10px;
+        }
+        .moving{
+            flex-direction: column;
+           
+            }
+            .img-sign img{
+                width: 100%;
+           max-width: 400px;
+           max-height: 250px;
+           min-height: 250px;
+           border-radius:50px 50px 50px 50px;
+           border-top: none;
+           border-bottom: none;
+           border-left: none;
+           box-shadow: none;
+            }
+            .Form-box-1{
+                background-color: white;
+                border-radius: 0 0px 0px 0;
+                box-shadow: none;
+                /* padding-top: 20px;
+                padding-bottom: 20px; */
+                max-width: 350px;
+                min-width: 250px;
+                width: 60%;
+                max-height: 800px;
+                min-height: 400px;
+                border-top: none;
+                border-bottom: none;
+                border-right: none;
+                }
+                .img-sign-logo {
+                  display: none;
+                   }
+                   .pstart{
+                   font-size: 15px;
+                   }
+               .center1{
+                padding: 0;
+                margin: 0;
+               }
 }

@@ -152,3 +152,4 @@
     });
   </script>
 </main>
+<script src="./asset/js/responsive_system.js"></script>
