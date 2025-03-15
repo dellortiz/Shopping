@@ -89,8 +89,9 @@
         <label>Message: *</label>
         <textarea  type="text" name="message" required pattern="[A-Za-zÀ-ÿ0-9' ,.-]{1,255}" placeholder="Write your message here"></textarea>
         </div>
-
+        <div class="form-botton-choose">
         <button class="botton-form" type="submit">Submit </button>
+        </div>
 
         <!-- Span para mostrar mensajes -->
 

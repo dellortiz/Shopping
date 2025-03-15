@@ -145,8 +145,9 @@
                             <label for="country">Country:</label>
                             <input type="text" name="country" required placeholder="Your Country" pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" />
                         </div>
-
+                        <div class="form-botton-choose">
                             <button class="botton-form" type="submit">Submit </button>
+                        </div>
                     </form>
 </main>
 <script>

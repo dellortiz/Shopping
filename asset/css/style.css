@@ -75,6 +75,7 @@ html {
         position: fixed;
         width: 71.5vw;
         max-width: 72%;
+        min-height: 80px;
         height: auto;
         left: 50%;
         top: 16.5%;
@@ -611,6 +612,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra profesional */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra profesional */
     border-radius: 4px;
     text-align: center;
+    align-items: center;
     }
     .botton-form:hover{
         background-color: #0d60b9;
@@ -1368,14 +1370,19 @@ text-align: center;
    
 }
 .contact-form-container {
+    
     width: 100%;
     max-width: 80%;
-    margin: 50px auto;
+    margin: 30px auto;
     background-color: #ffffff;
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     margin-top: 11%;
+}
+.form-botton-choose{
+display: flex;
+justify-content: center;
 }
 
 .contact-form-container h1 {
@@ -1701,6 +1708,9 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     justify-content: center;
     margin-top: 50px;
 }
+/*----------------------------------------------footer----------------------------------------------*/
+
+
 /*----------------------------------------------Responsive------------------------------------------*/
 @media screen and (min-width: 319px) and (max-width:599px) {
     .body-index, .main-body-index{
@@ -1803,8 +1813,9 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         padding: 14px;
         width: 80.5vw;
         max-width: 100%;
+        min-height: 55px;
         left: 50%;
-        margin-top: 28px;
+        margin-top: 3%;
         border-radius: 9px;
        }
        .basket-icone{
@@ -1868,4 +1879,23 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
                 padding: 0;
                 margin: 0;
                }
+               .contact-form-container {
+                margin-top: 20%;
+            }
+            .container-payment {
+                display: flex;
+                flex-direction: column;
+              
+            }
+            .order-summary {
+                margin-bottom: 20px;
+            }
+            .empty-cart-image {
+                width: 100%;
+                max-width: 550px;
+                min-width: 250px;
+                height: auto;
+                margin-top: 10px;
+            }
+          
 }

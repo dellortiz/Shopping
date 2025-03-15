@@ -359,66 +359,7 @@ check_and_revert_stale_stock($pdo, $id_user);
     <a href="iphones.php">IPhone</a>
     <a href="android.php">Android</a>
     </div>
-    <!-- <?php
-session_start();
-include_once("./common/connexiondb.php");
-
-$user_has_data = false;
-
-// Check if the user is logged in by verifying the email session variable
-if (isset($_SESSION['email'])) {
-    // Get user id from session
-    $id_user = $_SESSION['id_user'];
-    try {
-        $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-        // Verify if user data exists using id_user
-        $sql = "SELECT COUNT(*) FROM user_data WHERE id_user = :id_user";
-        $qry = $pdo->prepare($sql);
-        $qry->execute([':id_user' => $id_user]);
-        $count = $qry->fetchColumn();
-
-        if ($count > 0) {
-            $user_has_data = true;
-        }
-        unset($pdo);
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-?>
-
-<script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            <?php if (isset($_SESSION['email']) && !$user_has_data): ?>
-            document.getElementById('personalinformation').style.display = 'block';
-            <?php endif; ?>
-
-            document.getElementById('personalBtn').addEventListener('click', function() {
-                // Redirect to personal information registration page
-                window.location.href = 'user_data.php';
-            });
-
-            document.getElementById('cancelPersonalBtn').addEventListener('click', function() {
-                // Close the popup
-                document.getElementById('personalinformation').style.display = 'none';
-            });
-        });
-    </script> -->
-    <div id="personalinformation" class="popup">
-        <div class="popup-contentlogout">
-            <div class="center">
-                <div>
-                    <h2>Personal Information</h2>
-                    <p>Would you like to register your personal information such as address, name, telephone...... for future purchases now  ?</p>
-                    <button class="botton" id="personalBtn">Yes</button>
-                    <button class="botton-buy" id="cancelPersonalBtn">No</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
  
    
     

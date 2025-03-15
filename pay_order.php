@@ -24,6 +24,7 @@
         </span>
       <?php endif; ?>
     </div>
+   
     <div class="container-payment">
       <?php
       include_once("./common/connexiondb.php");

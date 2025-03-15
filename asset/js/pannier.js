@@ -174,7 +174,9 @@ function updateBasket() {
                     <div class="empty-basket">
                         <p>There is no product selected</p>
                         <img src="./asset/slider/slider6.webp" alt="empty basket" class="empty-cart-image"><br>
+                      <div class="form-botton-choose">
                      <button class="botton-form" onclick="window.location.href='./clothes.php'">Continue shopping</button>
+                     </div>
                      </div> `);
 
 

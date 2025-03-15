@@ -85,7 +85,7 @@ $showform = $result['total'] > 0;
  if($showform): ?>
     <div class="contact-form-container">
         <p class="p-form">Attention. You must take some action with your selection, after 15 minutes your shopping cart will be emptied !!!</p>
-        <form action="check_user_data.php" method="post">
+        <form class="form-botton-choose" action="check_user_data.php" method="post">
             <input class="botton" type="submit" value="Proceed to payment" class="btn btn-primary" id="proceed-to-checkout">
         </form>
     </div>
