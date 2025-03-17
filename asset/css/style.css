@@ -45,7 +45,7 @@ html {
     
     .body-index {
     margin: 0 9%;
-    min-height: 100vh;
+    min-height: 150vh;
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
     background-color: rgb(246, 248, 249);
     }
@@ -55,13 +55,14 @@ html {
     background-color: rgb(246, 248, 249);
     margin-top: 60px; /* Ajusta este valor según la altura del select-menu */
     padding: 21px;
-    height: 200vh;
+    min-height: 150vh;
     
     }
     .main-body-index-sign{
         margin-top: 60px; /* Ajusta este valor según la altura del select-menu */  
         background-color: white;
-        height: 100vh;
+        height: auto;
+        min-height: 100vh;
     }
     .div-main{
         display: flex;
@@ -116,7 +117,7 @@ html {
     min-height: 100vh;
     height: auto; /* Permite que el contenedor se ajuste al contenido */
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
-    background-color: rgb(246, 248, 249);
+    background-color:white;
 }
 .section-header-index{
     background-repeat: no-repeat;
@@ -126,7 +127,7 @@ html {
     max-height: 650px;
     min-height: 320px;
     height: 645px;
-    color: white;
+    /* color: white; */
    
     
     
@@ -1220,24 +1221,24 @@ a{
   /*------------------------------------------------------------------Gallery---------------------------------------------------------------*/
   .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 16rem);
+    grid-template-columns: repeat(3, 22rem);
     gap: 10px; /* Espacio entre las imágenes */
     justify-content: center; /* Centra la galería horizontalmente */
     margin-top: 5%;
     margin-bottom: 8%;
     padding: 20px;
-    background-color: #1a2544ea;
-    box-shadow: 0 0 30px 10px rgba(49, 58, 91, 0.5); /* Sombra difusa */
+    background-color:  #eceff1ea;
+    /* box-shadow: 0 0 30px 10px rgba(49, 58, 91, 0.5);  */
 }
 
 /* Elementos de la galería */
 .gallery-item {
     position: relative;
     overflow: hidden;
-    width: 15rem; /* Tamaño más pequeño de las imágenes */
-    height: 120px;
+    width: 16rem; /* Tamaño más pequeño de las imágenes */
+    height: 130px;
     margin: 0 auto; /* Centra cada imagen en su celda */
-    border:5px solid white ;
+    border:2px groove rgb(3, 3, 12) ;
 }
 
 /* Imagen dentro de cada elemento */
@@ -1248,13 +1249,14 @@ a{
     width: 100%; /* Ocupa todo el ancho del contenedor */
     height: 100%; /* Ocupa todo el alto del contenedor */
     object-fit: cover;
-    border-radius: 5px; /* Esquinas ligeramente redondeadas */
+   
 }
 .div-aftergallery{
     max-width: 90%;
     margin: 40px auto;
-    padding: 0 10px;
+    padding-bottom: 70px;
     background-color: #ffffff;
+   
 }
 .h3-aftergalery{
     margin: 20px;
@@ -1709,8 +1711,94 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
 }
 /*----------------------------------------------footer----------------------------------------------*/
+ .footer{
+    margin: 0 12%;
+    box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
+    background-color: rgb(246, 248, 249);
+}
+.social-media{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid white;
+    background-color: rgb(171, 176, 192);
+    color: rgb(47, 50, 107);
+}
+.social-media div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+.social-media img{
+    margin: 5px;
+    width: 25px;
+}
+.site-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #1d212dea;
+    color: rgb(196, 194, 194);
 
+}
+.site-description p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color:rgb(175, 175, 80);
+   
+}
+.site-description li{
+    color:white; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease 0s;
+     
+}
 
+.site-description a{
+    display: inline-block;
+    transition: all 0.3s ease 0s;;
+    color:white; 
+}
+.site-description a:hover{
+    text-decoration: underline;
+    transform: scale(1.2);
+    transition: all 0.3s ease 0s;
+}
+.site-description span{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(123, 150, 167);
+     
+}
+.site-description div{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Espaciado interno horizontal */
+    padding-right: 15px;
+    width: 100%; /* Por defecto ocupa todo el ancho */
+    max-width: 1140px; /* Ajusta según el tamaño de pantalla */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  
+}
+.copyright{
+    text-align: center;
+    padding: 20px;
+    background-color: #040508ea;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color:rgb(175, 175, 80);
+}
+.copyright a{
+    color:rgb(175, 175, 80);
+}
 /*----------------------------------------------Responsive------------------------------------------*/
 @media screen and (min-width: 319px) and (max-width:599px) {
     .body-index, .main-body-index{

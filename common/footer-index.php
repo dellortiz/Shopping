@@ -1,5 +1,4 @@
-<footer class="footer ">
- <section class="social-media">
+<section class="social-media">
     <div>
      <p>Get connected with us on social networks:</p>
     </div>
@@ -15,7 +14,7 @@
     </div>
  </section>
  <section class="site-description">
- <div>
+    <div>
         <p>Shopping :</p>
         <ul>
       <li><span> This online store is a website designed with the objective of selling products or services through electronic commerce tools</span></li>

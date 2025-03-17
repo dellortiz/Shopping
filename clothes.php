@@ -232,9 +232,7 @@ window.addEventListener('scroll', function () {
   });
 </script>
 
-
-<footer>
-
-</footer>
+</main>
+<?php include_once('./common/footer.php') ?>
 </body>
 </html>

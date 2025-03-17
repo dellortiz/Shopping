@@ -135,9 +135,6 @@ echo "Error: " . $e->getMessage();
     <script src="./asset/js/search.js"></script>
     <script src="./asset/js/responsive_system.js"></script>
 
-
-    <footer>
-
-    </footer>
+<?php include_once('./common/footer.php')?>
 </body>
 </html>
