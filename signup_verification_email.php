@@ -98,6 +98,7 @@
 <script src="./asset/js/message_id.js"></script>
 <script src="./asset/js/signup.js"></script>
 <script src="./asset/js/responsive_system.js"></script>
+<script src="./asset/js/scroll.js"></script>
 <script>
     $(document).ready(function() {
         $('#email').on('keyup', function() {

@@ -95,6 +95,6 @@ $showform = $result['total'] > 0;
 <script async src="./asset/js/pannier.js"></script>
 </form>
 </main>
-<?php include_once('./common.footer.php')?>
+<?php include_once('./common/footer.php')?>
 </body>
 </html>

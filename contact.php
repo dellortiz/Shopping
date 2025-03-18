@@ -100,3 +100,8 @@
 <script src="./asset/js/script.js"></script>
 <script src="./asset/js/signin.js"></script>
 <script src="./asset/js/responsive_system.js"></script>
+<script src="./asset/js/scroll.js"></script>
+
+<?php include_once('./common/footer.php')?>
+</body>
+</html>

@@ -257,7 +257,10 @@ check_and_revert_stale_stock($pdo, $id_user);
             </div>
         </section>
     </main>
+   
     <?php include_once('./common/footer-index.php')?>
+    
+   
     <!-- Popup -->
     <div id="signInPopup" class="popup">
         <div class="popup-content">

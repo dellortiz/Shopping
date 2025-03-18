@@ -62,76 +62,130 @@
 <span id="item-count" class="item-count">0</span> 
 </div>
 </div>
-<section class="newdisign">
-<div class="bloque-articulos">
-<?php include_once("./common/connexiondb.php"); 
-try {
-$pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
-// Opciones de PDO
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-// Preparación de la consulta
-$sql = "SELECT * FROM products Where category='laptops'";
-$qry = $pdo->prepare($sql);
-$qry->execute();
-
-$products = $qry->fetchAll(PDO::FETCH_ASSOC);
-foreach ($products as $product) {
-?>
-<!-- <?php
-echo '<pre>';
-var_dump($products);
-echo '</pre>';
-?> -->
-
-<article id="idarticle<?= $product['id_products'] ?>" onclick="showPopup('popup<?= $product['id_products'] ?>')">
-<img class="imgarticle" src="./asset/computers/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-<div class="article-text">
-<p class="price-text"><?= number_format($product['price'], 2) ?>€</p>
-<p><?= htmlspecialchars($product['name']) ?></p>
-</div>
-</article>
-
-<div id="popup<?= $product['id_products'] ?>" class="popuparticle" onclick="hidePopup('popup<?= $product['id_products'] ?>')">
-<div class="popup-content" onclick="event.stopPropagation()">
-<span class="close" onclick="hidePopup('popup<?= $product['id_products'] ?>')">×</span>
-<article>
-<img class="imgarticle" src="./asset/computers/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-<h4><?= htmlspecialchars($product['name']) ?></h4>
-<p><?= number_format($product['price'], 2) ?>€</p>
-<p class="stock-indicator <?= $product['stock'] > 0 ? 'green-text' : 'out-of-stock' ?>">
-                <?= $product['stock'] > 0 ? 'In stock' : 'Out of stock' ?>
-            </p>
-
-<form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
-    <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
-    <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
-    </form>
-</article>
-</div>
-</div>
 <?php
-}
-} catch (PDOException $e) {
-echo "Error: " . $e->getMessage();
-}
-?>
-</div>
+        include_once("./common/connexiondb.php");
+
+        // Recuperamos los parámetros del filtro desde GET
+        $selectedGenre = isset($_GET['genre']) ? $_GET['genre'] : 'all';
+        $selectedPrice = isset($_GET['price']) ? $_GET['price'] : 'all';
+
+        try {
+            $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            // Empezamos con la condición base: siempre filtramos por categoría 'clothes'
+            $sql = "SELECT * FROM products WHERE category = 'laptops'";
+
+            // Agregar condición para el género si es necesario
+            if ($selectedGenre !== 'all' && $selectedGenre !== '') {
+                $sql .= " AND genre = :genre";
+            }
+
+            // Agregar condición para el precio en función del rango
+            if ($selectedPrice !== 'all' && $selectedPrice !== '') {
+                if ($selectedPrice === 'first') {
+                    $sql .= " AND price < 500";
+                } elseif ($selectedPrice === 'second') {
+                    $sql .= " AND price >= 500";
+                }
+            }
+
+            // Preparamos la consulta
+            $qry = $pdo->prepare($sql);
+
+            // Si se filtró por género, enlazamos el parámetro
+            if ($selectedGenre !== 'all' && $selectedGenre !== '') {
+                $qry->bindParam(':genre', $selectedGenre, PDO::PARAM_STR);
+            }
+
+            $qry->execute();
+            $products = $qry->fetchAll();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            exit;
+        }
+        ?>
+        <div class="basket-icone">
+            <a href="shopping.php"><img class="img-basket" src="./asset/logo1.png" alt="broken"></a>
+            <span id="item-count" class="item-count">0</span>
+        </div>
+    </div>
+    <section class="div-main-img">
+        <div>
+            <img src="./asset/unacomputadoragamer.jpeg" alt="">
+            <img src="./asset/unalaptop.jpeg" alt="Imagen 2">
+            <img src="./asset/unacomputadora.jpeg" alt="Imagen 1">
+        </div>
+        <div class="div-main-img-botton">
+            <form method="GET" action="">
+                <!-- Select para género -->
+                <select name="genre" onchange="this.form.submit()">
+                    <option value="all" <?= $selectedGenre == 'all' ? 'selected' : '' ?>>All Genre</option>
+                    <option value="student" <?= $selectedGenre == 'student' ? 'selected' : '' ?>>Student</option>
+                    <option value="worker" <?= $selectedGenre == 'worker' ? 'selected' : '' ?>>Worker</option>
+                    <option value="gamer" <?= $selectedGenre == 'gamer' ? 'selected' : '' ?>>Gamer</option>
+                </select>
+                <!-- Select para precio -->
+                <select name="price" onchange="this.form.submit()">
+                    <option value="all" <?= $selectedGenre == 'all' ? 'selected' : '' ?>>All Prices</option>
+                    <option value="first" <?= $selectedPrice == 'first' ? 'selected' : '' ?>>First Prices </option>
+                    <option value="second" <?= $selectedPrice == 'second' ? 'selected' : '' ?>>Second Prices </option>
+                </select>
+            </form>
+        </div>
+    </section>
+    <section class="newdisign">
+    <div class="bloque-articulos">
+        <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+                <!-- Artículo que muestra la información del producto -->
+                <article class="article" id="idarticle<?= $product['id_products'] ?>" onclick="showPopup('popup<?= $product['id_products'] ?>')">
+                    <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <div class="article-text">
+                        <p class="price-text"><?= number_format($product['price'], 2) ?>€</p>
+                        <p><?= htmlspecialchars($product['name']) ?></p>
+                    </div>
+                </article>
+
+                <!-- Popup correspondiente al producto -->
+                <div id="popup<?= $product['id_products'] ?>" class="popuparticle" onclick="hidePopup('popup<?= $product['id_products'] ?>')">
+                    <div class="popup-content" onclick="event.stopPropagation()">
+                        <span class="close" onclick="hidePopup('popup<?= $product['id_products'] ?>')">×</span>
+                        <article>
+                            <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                            <h4><?= htmlspecialchars($product['name']) ?></h4>
+                            <p><?= number_format($product['price'], 2) ?>€</p>
+                            <p class="<?= $product['stock'] > 0 ? 'green-text' : 'out-of-stock' ?>">
+                                <?= $product['stock'] > 0 ? 'In stock' : 'Out of stock' ?>
+                            </p>
+                            <form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
+                                <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
+                                <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No products found.</p>
+        <?php endif; ?>
+    </div>
+</section>
+
 
 <div class="bloque-pannier">
         <p>Hola Mundo</p>
     </div>
-
-
 </section>
+</main>
     <script src="./asset/js/pannier.js"></script>
     <script src="./asset/js/signin.js"></script>
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/search.js"></script>
     <script src="./asset/js/responsive_system.js"></script>
-    <footer>
+    <script src="./asset/js/scroll.js"></script>
 
-    </footer>
+    <?php include_once('./common/footer.php')?>
 </body>
 </html>

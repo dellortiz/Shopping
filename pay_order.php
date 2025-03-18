@@ -154,3 +154,6 @@
   </script>
 </main>
 <script src="./asset/js/responsive_system.js"></script>
+<script src="./asset/js/scroll.js"></script>
+</body>
+</html>

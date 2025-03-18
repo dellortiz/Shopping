@@ -90,9 +90,8 @@ cart and an online payment system, which together facilitate digital transaction
     <script src="./asset/js/script.js"></script>
     <script src="./asset/js/slider.js"></script>
     <script src="./asset/js/responsive_system.js"></script>
+    <script src="./asset/js/scroll.js"></script>
   
-    <footer>
-
-    </footer>
+    <?php include_once('./common/footer.php')?>
 </body>
 </html>

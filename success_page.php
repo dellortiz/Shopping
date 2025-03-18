@@ -170,6 +170,7 @@ try {
     <button class="botton-form" onclick="window.location.href='./clothes.php'">Continue shopping</button>
     </div>
   </div>
-</body>
+  <?php include_once('./common/footer.php')?>
 <script src="./asset/js/responsive_system.js"></script>
+</body>
 </html>

@@ -3,7 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none; 
-    
+   
     
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -12,12 +12,11 @@
 html {
     scroll-padding-top: 260px; /* Ajusta este valor según la altura de tu encabezado fijo */
     scroll-behavior: smooth; /* Desplazamiento suave */
-    }
-
+}
 .section-header {
     display: flex;
     justify-content: space-between;
-    background-color: #1b1b32;
+    background-color: #0d0c2b; /* Degradado azul profesional */
     color: white;
     padding: 0.5rem; /* Usar unidades relativas */
     position: fixed;
@@ -45,7 +44,7 @@ html {
     
     .body-index {
     margin: 0 9%;
-    min-height: 150vh;
+    height: auto;
     box-shadow: 16px 0px 16px -16px rgba(0,0,0,0.6), -16px 0px 16px -16px rgba(0,0,0,0.6);
     background-color: rgb(246, 248, 249);
     }
@@ -55,23 +54,29 @@ html {
     background-color: rgb(246, 248, 249);
     margin-top: 60px; /* Ajusta este valor según la altura del select-menu */
     padding: 21px;
-    min-height: 150vh;
+     min-height: 120vh;
+    height: auto;
     
     }
     .main-body-index-sign{
         margin-top: 60px; /* Ajusta este valor según la altura del select-menu */  
         background-color: white;
         height: auto;
-        min-height: 100vh;
+        
+        
     }
+    
     .div-main{
         display: flex;
         justify-content: center;
         flex-direction: column;
         text-align: center;
         align-items: center;
-        padding: 10px;
-        background-color: rgb(44, 44, 74);
+        padding: 9px;
+        background: linear-gradient(135deg, #12182f, #1e3a8a); /* Negro (#0a0a0a) a azul oscuro (#1e3a8a) */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+        font-family: 'Poppins', sans-serif; /* Fuente profesional */
+        border-radius: 12px; /* Bordes redondeados para un look más amigable */
         background-size: cover;
         position: fixed;
         width: 71.5vw;
@@ -79,12 +84,53 @@ html {
         min-height: 80px;
         height: auto;
         left: 50%;
-        top: 16.5%;
+        top: 19%;
         transform: translate(-50%, -50%);
         z-index: 100;
         transition: top 0.6s; /* Transición suave */
        
        }
+       .div-main-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 14%;
+        width: 100%;
+        
+        }
+        .div-main-img-botton{
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            top: 52%;
+            left: 0%;
+            right: 0%;
+            
+        }
+        .div-main-img-botton select{
+            width: 200px;
+            padding: 11px 16px;
+            background-color: #0e1a38;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */;
+            color: white;
+            border: 0.5px solid rgb(185, 184, 184);
+            font-family: 'Roboto', sans-serif;
+            margin: 7px;
+            border-radius: 4px;
+           
+        }
+
+       .div-main-img img {
+        width: 90%; /* Ancho relativo para que se adapte a pantallas */
+        max-width: 310px;/* Ancho máximo para pantallas grandes */
+        min-width: 20px; /* Ancho mínimo para pantallas pequeñas */
+        height: 250px;
+       
+    }
+  
        .basket-icone{
        position: absolute;
        right: 20px;
@@ -796,7 +842,7 @@ font-weight: bolder;
 }
 .submenu li:hover{
    
-    background-color: #61619b;
+    background-color: #132769;
     transition: all 0.3s ease-in-out;
 }
 .select-menu, ul{
@@ -864,7 +910,6 @@ article {
     border: 0.1px groove rgb(232, 231, 231);
     padding: 20px 25px;
     font-weight: 500;
-    border-radius: 12px;
     transition: transform 0.1s, box-shadow 0.1s;
     height: 280px;
   
@@ -927,11 +972,11 @@ article {
 }
 /*----------------------------------------*/
 .newdisign {
-    
+   
     color: black;
     display: flex ;
-    margin-top: 120px;
-   
+    margin-top: 25px;
+    
 }
 
 .bloque-articulos {
@@ -942,7 +987,7 @@ article {
       padding: 15px;
       flex: 1;
      /* overflow-y: auto; */
-     max-height: 50rem; 
+     /* max-height: 50rem;  */
 }
 
 
@@ -1725,7 +1770,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
     border-bottom: 1px solid white;
-    background-color: rgb(171, 176, 192);
+    background-color: rgb(233, 234, 237);
     color: rgb(47, 50, 107);
 }
 .social-media div{
@@ -1737,12 +1782,17 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 .social-media img{
     margin: 5px;
     width: 25px;
+    transition: all 0.3s ease 0s;
+}
+.social-media img:hover{
+    transform: scale(1.3);
+    transition: all 0.3s ease 0s;
 }
 .site-description {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #1d212dea;
+    background-color: #1c2541ea;
     color: rgb(196, 194, 194);
 
 }
@@ -1750,11 +1800,11 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
     font-weight: 600;
-    color:rgb(175, 175, 80);
+    color:white;
    
 }
 .site-description li{
-    color:white; 
+    color:rgb(183, 182, 182); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -1765,7 +1815,8 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 .site-description a{
     display: inline-block;
     transition: all 0.3s ease 0s;;
-    color:white; 
+    color:rgb(183, 182, 182);
+    transition: all 0.3s ease 0s;
 }
 .site-description a:hover{
     text-decoration: underline;
@@ -1774,8 +1825,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 .site-description span{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(123, 150, 167);
-     
+    color: rgb(123, 150, 167);  
 }
 .site-description div{
     margin-left: auto;
@@ -1791,7 +1841,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 .copyright{
     text-align: center;
     padding: 20px;
-    background-color: #040508ea;
+    background-color: #0f1522ea;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     color:rgb(175, 175, 80);
@@ -1906,6 +1956,16 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         margin-top: 3%;
         border-radius: 9px;
        }
+       .div-main-img img{
+        display: none;
+       }
+       .div-main-img-botton{
+        top: 28%;
+        z-index: 98;
+       }
+       .newdisign{
+        margin-top: 60%;
+       }
        .basket-icone{
         top: 15px;
        }
@@ -1931,6 +1991,7 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             flex-direction: column;
            
             }
+            
             .img-sign img{
                 width: 100%;
            max-width: 400px;
@@ -1985,5 +2046,38 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
                 height: auto;
                 margin-top: 10px;
             }
-          
+            .div-aftergallery{
+                padding-bottom: 0px; 
+            }
+            .footer{
+                margin: 0;
+            }
+            .social-media{
+                flex-direction: column;
+                text-align: center;         
+            }
+            .site-description {
+                display: flex;
+                flex-direction: column;
+            }
+            .site-description span{
+                align-items: start;
+                text-align: left;
+               font-size: 6x;
+            }
+            .site-description div{
+                width: 80%; /* Por defecto ocupa todo el ancho */
+            }
+@media screen and (min-width: 319px) and (max-width:375px) {
+    .div-main{
+        margin-top: 10%;
+    } 
+    .div-main-img-botton{
+        top: 35%;
+        z-index: 98;
+       }
+       .newdisign{
+        margin-top: 68%;
+       }
+}
 }

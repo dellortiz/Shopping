@@ -62,3 +62,4 @@ function checkScreenSize() {
 
 document.addEventListener("DOMContentLoaded", checkScreenSize);
 window.onresize = checkScreenSize;
+
