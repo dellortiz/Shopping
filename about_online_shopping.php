@@ -25,6 +25,13 @@
         <li class="section-menu-li"><a href="#online-entail"> What does selling online entail?</a></li>
         <li class="section-menu-li "><a href="#virtual-store">What are the elements of a virtual store?</a></li>
         </ul></li>
+        <li class="section-menu-li">Data Privacy
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="data_privacy.php#processing"> Processing of personal data and transfer to third parties</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#cookies"> Cookies</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#personaldata"> Personal data and retention provisions</a></li>
+        <li class="section-menu-li "><a href="data_privacy.php#yourrights">Your rights</a></li>
+        </ul></li>
         <li class="section-menu-li">Contact
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>

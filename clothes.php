@@ -29,6 +29,14 @@
           <li class="section-menu-li "><a href="about_online_shopping.php#virtual-store">What are the elements of a virtual store?</a></li>
         </ul>
       </li>
+      <li class="section-menu-li">Data Privacy
+        <ul class="submenu">
+          <li class="section-menu-li"><a href="data_privacy.php#processing"> Processing of personal data and transfer to third parties</a></li>
+          <li class="section-menu-li"><a href="data_privacy.php#cookies"> Cookies</a></li>
+          <li class="section-menu-li"><a href="data_privacy.php#personaldata"> Personal data and retention provisions</a></li>
+          <li class="section-menu-li "><a href="data_privacy.php#yourrights">Your rights</a></li>
+        </ul>
+      </li>
       <li class="section-menu-li">Contact
         <ul class="submenu">
           <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
@@ -115,8 +123,8 @@
       <span id="item-count" class="item-count">0</span>
     </div>
   </div>
-  <section class="div-main-img">
-    <div>
+  <section>
+    <div class="div-main-img">
       <img src="./asset/ropamujer.jpeg" alt="">
       <img src="./asset/ropamujerhombre.jpeg" alt="Imagen 2">
       <img src="./asset/ropadehombre.jpeg" alt="Imagen 1">
@@ -141,43 +149,66 @@
   </section>
 
 
+
   <section class="newdisign">
     <div class="bloque-articulos">
-        <?php if (!empty($products)): ?>
-            <?php foreach ($products as $product): ?>
-                <!-- Artículo que muestra la información del producto -->
-                <article class="article" id="idarticle<?= $product['id_products'] ?>" onclick="showPopup('popup<?= $product['id_products'] ?>')">
-                    <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                    <div class="article-text">
-                        <p class="price-text"><?= number_format($product['price'], 2) ?>€</p>
-                        <p><?= htmlspecialchars($product['name']) ?></p>
-                    </div>
-                </article>
+      <?php if (!empty($products)): ?>
+        <?php foreach ($products as $product): ?>
+          <!-- Artículo que muestra la información del producto -->
+          <article class="article" id="idarticle<?= $product['id_products'] ?>" onclick="showPopup('popup<?= $product['id_products'] ?>')">
+            <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            <div class="article-text">
+              <p class="price-text"><?= number_format($product['price'], 2) ?>€</p>
+              <p><?= htmlspecialchars($product['name']) ?></p>
+              <?php
+              $user_logged = isset($_SESSION['email']);
+              ?>
 
-                <!-- Popup correspondiente al producto -->
-                <div id="popup<?= $product['id_products'] ?>" class="popuparticle" onclick="hidePopup('popup<?= $product['id_products'] ?>')">
-                    <div class="popup-content" onclick="event.stopPropagation()">
-                        <span class="close" onclick="hidePopup('popup<?= $product['id_products'] ?>')">×</span>
-                        <article>
-                            <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                            <h4><?= htmlspecialchars($product['name']) ?></h4>
-                            <p><?= number_format($product['price'], 2) ?>€</p>
-                            <p class="<?= $product['stock'] > 0 ? 'green-text' : 'out-of-stock' ?>">
-                                <?= $product['stock'] > 0 ? 'In stock' : 'Out of stock' ?>
-                            </p>
-                            <form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
-                                <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
-                                <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
-                            </form>
-                        </article>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No products found.</p>
-        <?php endif; ?>
+              <?php if ($user_logged): ?>
+                <!-- Se muestra el ícono de corazón solo si el usuario está autenticado -->
+                <img id="imgHeart<?= $product['id_products'] ?>"
+                  class="img-heart"
+                  src="./asset/heart.png"
+                  alt="heart"
+                  onclick="toggleHeart(event, <?= $product['id_products'] ?>)"
+                  style="cursor: pointer;">
+              <?php endif; ?>
+
+              <!-- Siempre se muestra el contador de likes -->
+              <span id="likesCount<?= $product['id_products'] ?>" style="margin-left: 5px;">
+                <?= htmlspecialchars($product['likes']) ?>
+              </span>
+              <span>&nbsp;like</span>
+
+
+            </div>
+
+          </article>
+
+          <!-- Popup correspondiente al producto -->
+          <div id="popup<?= $product['id_products'] ?>" class="popuparticle" onclick="hidePopup('popup<?= $product['id_products'] ?>')">
+            <div class="popup-content" onclick="event.stopPropagation()">
+              <span class="close" onclick="hidePopup('popup<?= $product['id_products'] ?>')">×</span>
+              <article>
+                <img class="imgarticle" src="./asset/products/<?= htmlspecialchars($product['category']) ?>/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                <h4><?= htmlspecialchars($product['name']) ?></h4>
+                <p><?= number_format($product['price'], 2) ?>€</p>
+                <p class="<?= $product['stock'] > 0 ? 'green-text' : 'out-of-stock' ?>">
+                  <?= $product['stock'] > 0 ? 'In stock' : 'Out of stock' ?>
+                </p>
+                <form id="addToBasketForm" data-id="<?= htmlspecialchars($product['id_products']) ?>">
+                  <input type="hidden" name="id_products" value="<?= htmlspecialchars($product['id_products']) ?>">
+                  <input class="botton-buy" type="button" value="Add to Basket" onclick="addToBasket(<?= htmlspecialchars($product['id_products']) ?>)">
+                </form>
+              </article>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p>No products found.</p>
+      <?php endif; ?>
     </div>
-</section>
+  </section>
 
 
   <div class="bloque-pannier">
@@ -194,9 +225,7 @@
 <script src="./asset/js/search.js"></script>
 <script src="./asset/js/responsive_system.js"></script>
 <script src="./asset/js/scroll.js"></script>
-
-
-
+<script src="./asset/js/likes.js"></script>
 
 <?php include_once('./common/footer.php') ?>
 </body>

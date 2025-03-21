@@ -26,6 +26,13 @@
         <li class="section-menu-li"><a href="about_online_shopping.php#online-entail"> What does selling online entail?</a></li>
         <li class="section-menu-li "><a href="about_online_shopping.php#virtual-store">What are the elements of a virtual store?</a></li>
         </ul></li>
+        <li class="section-menu-li">Data Privacy
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="data_privacy.php#processing"> Processing of personal data and transfer to third parties</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#cookies"> Cookies</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#personaldata"> Personal data and retention provisions</a></li>
+        <li class="section-menu-li "><a href="data_privacy.php#yourrights">Your rights</a></li>
+        </ul></li>
         <li class="section-menu-li up">Contact
         <ul class="submenu">
         <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
@@ -89,6 +96,11 @@
         <label>Message: *</label>
         <textarea  type="text" name="message" required pattern="[A-Za-zÀ-ÿ0-9' ,.-]{1,255}" placeholder="Write your message here"></textarea>
         </div>
+       
+        <!-- <label for="conditions"> Privacy Policy :</label>
+        <input type="checkbox" name="conditions" required title="The information collected during your registration is processed in accordance with our Privacy Policy. We are committed to protecting your personal data and only using it in the context of your use of the Site. Checking here you agree to share your data with us"> -->
+        
+        
         <div class="form-botton-choose">
         <button class="botton-form" type="submit">Submit </button>
         </div>

@@ -60,4 +60,8 @@ function delete_pending_orders($pdo) {
 
 // Llamar a la función delete_pending_orders para eliminar órdenes pendientes
 delete_pending_orders($pdo);
+
+
+
 ?>
+

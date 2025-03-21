@@ -55,8 +55,8 @@
                 <div class="div-main">
                     <h2 class="h2pages ">Registration form</h2>
                 </div>
-                <form id="registration-form" class="contact-form-container" action="user_data_back.php" method="post">
-                    <p class="p-form">We need your data to deliver your purchase .</p>
+                <form id="registration-form" class="contact-form-container" action="user_data_modify_back.php" method="post">
+                    <p class="p-form">Do you want to modify your data to deliver your purchase ?</p>
                     <div class="message-container">
                     <?php if (isset($_SESSION['message'])): ?>
             <span id="message_id" class="span-contact">
@@ -92,7 +92,7 @@
                             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
                             // Preparación de la consulta
-                            $sql = "SELECT * FROM users WHERE id_user = :id_user";
+                            $sql = "SELECT * FROM user_data WHERE id_user = :id_user";
                             $qry = $pdo->prepare($sql);
                             $qry->bindParam(':id_user', $id_user, PDO::PARAM_INT);
                             $qry->execute();
@@ -113,47 +113,47 @@
                         <input type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>" />
                         <div class="form-group">
                             <label>First Name: *</label>
-                            <input type="text" name="firstname" required pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" placeholder=" First name" />
+                            <input type="text" name="firstname" required pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" placeholder=" First name" value="<?php echo $user['firstname'];?>" />
                         </div>
 
                         <div class="form-group">
                             <label>Last Name: *</label>
-                            <input type="text" name="lastname" required pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" placeholder=" Last Name" />
+                            <input type="text" name="lastname" required pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" placeholder=" Last Name" value="<?php echo $user['lastname'];?>"/>
                         </div>
 
                         <div class="form-group">
                             <label>Phone: *</label>
-                            <input type="text" name="phone" id="phone" pattern="\+?[0-9]{1,4}?[0-9\s]{9,14}" placeholder="Please enter a valid phone number" required>
+                            <input type="text" name="phone" id="phone" pattern="\+?[0-9]{1,4}?[0-9\s]{9,14}" placeholder="Please enter a valid phone number" value="<?php echo $user['phone'];?>" required>
                         </div>
 
                         <div class="form-group">
                             <label>Email: * </label>
                             <?php if (isset($_SESSION["email"])): ?>
-                                <input type="email" name="email" value="<?php echo $_SESSION["email"]; ?>" readonly required placeholder="youremail@example.com" />
+                                <input type="email" name="email" value="<?php echo $_SESSION["email"]; ?>" required placeholder="youremail@example.com" />
                             <?php endif ?>
                         </div>
 
                         <div class="form-group">
                             <label for="street">Street:</label>
-                            <input type="text" name="street" required placeholder="Your Street" pattern="[A-Za-z0-9À-ÿ'\/ ,.-]{1,255}" />
+                            <input type="text" name="street" required placeholder="Your Street" value="<?php echo $user['street'];?>" pattern="[A-Za-z0-9À-ÿ'\/ ,.-]{1,255}"  />
                         </div>
 
                         <div class="form-group">
                             <label for="city">City:</label>
-                            <input type="text" name="city" required placeholder="Your City" pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" />
+                            <input type="text" name="city" required placeholder="Your City" value="<?php echo $user['city'];?>" pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" />
                         </div>
 
                         <div class="form-group">
                             <label for="postal_code">Postal Code:</label>
-                            <input type="text" name="postal_code" required placeholder="Your Postal Code" pattern="[A-Za-z0-9-]{1,10}" />
+                            <input type="text" name="postal_code" required placeholder="Your Postal Code" value="<?php echo $user['postal_code'];?>" pattern="[A-Za-z0-9-]{1,10}" />
                         </div>
 
                         <div class="form-group">
                             <label for="country">Country:</label>
-                            <input type="text" name="country" required placeholder="Your Country" pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" />
+                            <input type="text" name="country" required placeholder="Your Country" value="<?php echo $user['country'];?>" pattern="[A-Za-zÀ-ÿ' ,.-]{1,255}" />
                         </div>
                         <div class="form-botton-choose">
-                            <button class="botton-form" type="submit">Submit </button>
+                            <button class="botton-form" type="submit">Modify </button>
                         </div>
                     </form>
 </main>

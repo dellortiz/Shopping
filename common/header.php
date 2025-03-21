@@ -306,23 +306,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     </script>  
-<!-- <script>
-var ubicacionPrincipal = document.documentElement.scrollTop;
-var header = document.querySelector('.section-header');
 
-header.style.top = '0px'; // Estado inicial
-
-window.addEventListener('scroll', function () {
-    var ubicacionActual = window.pageYOffset;
-    if (ubicacionPrincipal >= ubicacionActual || ubicacionActual < 50) {
-        header.style.top = '0px';
-    } else {
-        header.style.top = '-130px'; // Ajusta este valor según la altura del header
-    }
-    ubicacionPrincipal = ubicacionActual; // Actualiza la posición principal
-});
-</script> -->
-
-
-
-</script>

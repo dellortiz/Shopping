@@ -31,6 +31,13 @@
                     <li class="section-menu-li "><a href="about_online_shopping.php#virtual-store">What are the elements of a virtual store?</a></li>
                 </ul>
             </li>
+            <li class="section-menu-li">Data Privacy
+        <ul class="submenu">
+        <li class="section-menu-li"><a href="data_privacy.php#processing"> Processing of personal data and transfer to third parties</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#cookies"> Cookies</a></li>
+        <li class="section-menu-li"><a href="data_privacy.php#personaldata"> Personal data and retention provisions</a></li>
+        <li class="section-menu-li "><a href="data_privacy.php#yourrights">Your rights</a></li>
+        </ul></li>
             <li class="section-menu-li">Contact
                 <ul class="submenu">
                     <li class="section-menu-li"><a href="contact.php"> Contact us</a></li>
@@ -118,8 +125,8 @@
             <span id="item-count" class="item-count">0</span>
         </div>
     </div>
-    <section class="div-main-img">
-        <div>
+    <section>
+        <div class="div-main-img">
             <img src="./asset/unacomputadoragamer.jpeg" alt="">
             <img src="./asset/unalaptop.jpeg" alt="Imagen 2">
             <img src="./asset/unacomputadora.jpeg" alt="Imagen 1">
