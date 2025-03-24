@@ -31,7 +31,7 @@
       // Después de 1 segundo (o 2s según lo que decidas), se vuelve a la imagen normal.
       setTimeout(function() {
           heartImg.src = './asset/heart.png';
-      }, 1000);
+      }, 500);
   }
 
   function updateLike(productId, action) {

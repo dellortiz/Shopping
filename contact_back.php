@@ -78,7 +78,7 @@ try {
         $mail->Host = 'smtp.gmail.com'; // SMTP server
         $mail->SMTPAuth = true;
         $mail->Username = 'jo6024934@gmail.com'; // Tu dirección de correo de Gmail
-        $mail->Password = 'xqelsyfahfyuwvsz'; // Tu contraseña de Gmail
+        $mail->Password = 'kpfovylimgcrpgfu'; // Tu contraseña de Gmail
         $mail->SMTPSecure = 'tls'; // o 'ssl' si prefieres usar SSL
         $mail->Port = 587; // o 465 si prefieres usar SSL
 
